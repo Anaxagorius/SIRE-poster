@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>S.I.R.E. Tech Showcase Poster</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap');
     /* ── Reset & base ───────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -22,8 +23,6 @@
     }
 
 
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap');
-
     body {
       font-family: 'Open Sans', Arial, sans-serif;
       background: #f0f0f0;
@@ -35,7 +34,8 @@
     /* ── Print: A1 landscape ────────────────────────────────────── */
     @media print {
       @page { size: A1 landscape; margin: 8mm; }
-      body  { background: #f0f0f0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      html, body { margin: 0; padding: 0; min-height: 0; background: #f0f0f0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .poster { margin: 0 !important; box-shadow: none !important; max-width: none !important; width: 100% !important; border-radius: 0 !important; }
     }
 
     /* ── Poster shell ────────────────────────────────────────────── */
@@ -53,21 +53,29 @@
     .poster-header {
       background: var(--bg);
       border-bottom: 4px solid var(--red);
-      padding: 24px 36px 18px;
+      padding: 10px 36px;
       display: grid;
-      grid-template-columns: 110px 1fr 110px;
+      grid-template-columns: 22% 1fr 28%;
       align-items: center;
-      gap: 20px;
+      gap: 0;
     }
-    .header-spacer {
-      /* Empty left column to balance QR code */
+    .header-left-panel {
+      padding-right: 30px;
     }
     .header-center {
       text-align: center;
+      padding: 0 30px;
+    }
+    .header-right-panel {
+      padding-left: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 16px;
     }
     .poster-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 2.8rem;
+      font-size: 1.6rem;
       font-weight: 900;
       color: var(--red);
       line-height: 1.15;
@@ -75,34 +83,33 @@
     }
     .poster-subtitle {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.05rem;
+      font-size: 1.0rem;
       font-weight: 700;
       color: var(--red-dark);
-      margin-top: 6px;
       letter-spacing: 0.02em;
     }
     .poster-tagline {
       font-style: italic;
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       color: var(--muted);
-      margin-top: 4px;
     }
     .header-qr {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 5px;
+      gap: 4px;
+      flex-shrink: 0;
     }
     .header-qr img {
-      width: 110px;
-      height: 110px;
+      width: 70px;
+      height: 70px;
       border: 2px solid var(--border);
       border-radius: 6px;
       padding: 3px;
       background: white;
     }
     .qr-label {
-      font-size: 0.86rem;
+      font-size: 0.8rem;
       color: var(--muted);
       text-align: center;
       letter-spacing: 0.04em;
@@ -718,15 +725,19 @@
 
   <!-- ══════════════════════ HEADER ════════════════════════════════ -->
   <header class="poster-header">
-    <div class="header-spacer"></div>
+    <div class="header-left-panel">
+      <div class="poster-subtitle">Team Nibble&nbsp;·&nbsp;NSCC&nbsp;·&nbsp;PROG&nbsp;3300</div>
+      <div class="poster-tagline" style="margin-top:3px">2026</div>
+    </div>
     <div class="header-center">
       <div class="poster-title">S.I.R.E. — Simulated Incident Response Environment</div>
-      <div class="poster-subtitle">Team Nibble &nbsp;·&nbsp; NSCC</div>
-      <div class="poster-tagline">A real-time emergency response training platform</div>
     </div>
-    <div class="header-qr">
-      <img src="data:image/png;base64,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" alt="QR — github.com/Anaxagorius/S.I.R.E." />
-      <div class="qr-label">Scan to explore</div>
+    <div class="header-right-panel">
+      <div class="poster-tagline" style="text-align:right">A real-time emergency response training platform</div>
+      <div class="header-qr">
+        <img src="data:image/png;base64,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" alt="QR — github.com/Anaxagorius/S.I.R.E." />
+        <div class="qr-label">Scan to explore</div>
+      </div>
     </div>
   </header>
 
@@ -819,7 +830,7 @@
 
           <div class="arch-row">
             <div class="arch-box ab-blue"> Instructor<br/>Admin Dashboard</div>
-            <div class="arch-arrow">⬦</div>
+            <div class="arch-arrow">◆</div>
             <div class="arch-box ab-blue"> Trainees<br/>React UI (×10+)</div>
           </div>
 
