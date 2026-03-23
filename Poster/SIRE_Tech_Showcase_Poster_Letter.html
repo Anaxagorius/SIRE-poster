@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>S.I.R.E. Tech Showcase Poster</title>
+  <title>S.I.R.E. Tech Showcase Poster — Letter</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap');
     /* ── Reset & base ───────────────────────────────────────────── */
@@ -31,10 +31,11 @@
       line-height: 1.5;
     }
 
-    /* ── Print: A1 landscape ────────────────────────────────────── */
+    /* ── Print: letter portrait ─────────────────────────────────── */
     @media print {
-      @page { size: A1 landscape; margin: 8mm; }
-      html, body { margin: 0; padding: 0; min-height: 0; background: #f0f0f0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      @page { size: letter portrait; margin: 0; }
+      html { zoom: 0.49; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body { margin: 0; padding: 0; min-height: 0; background: #f0f0f0 !important; }
       .poster { margin: 0 !important; box-shadow: none !important; max-width: none !important; width: 100% !important; border-radius: 0 !important; }
     }
 
