@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>S.I.R.E. Tech Showcase Poster</title>
+  <style>
+    /* ── Reset & base ───────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:      #e63946;
+      --red-dark: #c1121f;
+      --text:     #1a1a1a;
+      --muted:    #555555;
+      --border:   #dddddd;
+      --bg:       #ffffff;
+      --col-l:    #fff5f5;
+      --col-m:    #f5fff9;
+      --col-r:    #f5f5ff;
+      --head-bg:  #e63946;
+    }
+
+
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Open Sans', Arial, sans-serif;
+      background: #f0f0f0;
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    /* ── Print: A1 landscape ────────────────────────────────────── */
+    @media print {
+      @page { size: A1 landscape; margin: 8mm; }
+      body  { background: #f0f0f0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+
+    /* ── Poster shell ────────────────────────────────────────────── */
+    .poster {
+      max-width: 1540px;
+      margin: 24px auto;
+      background: var(--bg);
+      border: 2px solid #cccccc;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+    }
+
+    /* ── Header band ─────────────────────────────────────────────── */
+    .poster-header {
+      background: var(--bg);
+      border-bottom: 4px solid var(--red);
+      padding: 24px 36px 18px;
+      display: grid;
+      grid-template-columns: 1fr auto 110px;
+      align-items: center;
+      gap: 20px;
+    }
+    .header-spacer {
+      /* Empty left column to balance QR code */
+    }
+    .header-center {
+      text-align: center;
+    }
+    .poster-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--red);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+    .poster-subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--red-dark);
+      margin-top: 6px;
+      letter-spacing: 0.02em;
+    }
+    .poster-tagline {
+      font-style: italic;
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .header-qr {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+    .header-qr img {
+      width: 110px;
+      height: 110px;
+      border: 2px solid var(--border);
+      border-radius: 6px;
+      padding: 3px;
+      background: white;
+    }
+    .qr-label {
+      font-size: 0.86rem;
+      color: var(--muted);
+      text-align: center;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* ── 3-column body ────────────────────────────────────────────── */
+    .poster-body {
+      display: grid;
+      grid-template-columns: 22% 1fr 28%;
+      gap: 0;
+      min-height: 0;
+    }
+    .col {
+      padding: 22px 20px;
+      border-right: 2px solid var(--border);
+    }
+    .col:last-child { border-right: none; }
+    .col-left  { background: #fffafa; }
+    .col-mid   { background: #ffffff; }
+    .col-right { background: #fafafa; }
+
+    /* ── Centre column spacing refinement ───────────────────────── */
+    .col-mid {
+      padding: 24px 24px;
+    }
+    .col-mid .sec-heading {
+      margin-bottom: 14px;
+    }
+    .col-mid .body-text {
+      line-height: 1.75;
+      margin-bottom: 22px;
+    }
+    .col-mid .description-text {
+      max-width: 88%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .col-mid .sec-divider {
+      margin: 26px 0;
+    }
+    .col-mid .content-box {
+      padding: 18px;
+    }
+    .col-mid .arch-wrap {
+      gap: 9px;
+      padding: 14px 0;
+    }
+    .col-mid .scenario-row {
+      gap: 10px;
+    }
+    .col-mid .sc-card {
+      padding: 10px 12px;
+    }
+
+    /* ── Section heading ─────────────────────────────────────────── */
+    .sec-heading {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--red);
+      text-align: center;
+      margin-bottom: 10px;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Body text ───────────────────────────────────────────────── */
+    .body-text {
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.65;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    /* ── Bullet lists ────────────────────────────────────────────── */
+    .bullet-list {
+      list-style: disc;
+      padding-left: 1.2em;
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.7;
+    }
+    .bullet-list li { margin-bottom: 3px; }
+
+    /* ── Section divider ─────────────────────────────────────────── */
+    .sec-divider {
+      border: none;
+      border-top: 1.5px solid var(--border);
+      margin: 18px 0;
+    }
+
+    /* ── Placeholder / content boxes ────────────────────────────── */
+    .content-box {
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+    .box-green  { background: #e8f8ef; border: 1.5px solid #a3d9b8; }
+    .box-orange { background: #fff0e0; border: 1.5px solid #f4c48a; }
+    .box-blue   { background: #e8f0ff; border: 1.5px solid #a3b8f4; }
+    .box-yellow { background: #fffde8; border: 1.5px solid #e0d878; }
+    .box-pink   { background: #fff0f0; border: 1.5px solid #f4a3a3; }
+    .box-purple { background: #f5eeff; border: 1.5px solid #c4a3f4; }
+    .erd-box    { background: #eef3fb; border: 1.5px solid #b8c7de; }
+    .box-label  {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.96rem;
+      color: var(--red);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── SWOT grid ───────────────────────────────────────────────── */
+    .swot-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .swot-cell {
+      border-radius: 6px;
+      padding: 10px 11px;
+      font-size: 0.93rem;
+      line-height: 1.55;
+    }
+    .swot-cell strong {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.98rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    .swot-s { background: #e8f8ef; border: 1.5px solid #a3d9b8; color: #1a5c36; }
+    .swot-s strong { color: #155228; }
+    .swot-w { background: #fff0e0; border: 1.5px solid #f4c48a; color: #6b3800; }
+    .swot-w strong { color: #6b3800; }
+    .swot-o { background: #e8f0ff; border: 1.5px solid #a3b8f4; color: #1a2e6b; }
+    .swot-o strong { color: #1a2e6b; }
+    .swot-t { background: #fff0f0; border: 1.5px solid #f4a3a3; color: #6b1a1a; }
+    .swot-t strong { color: #6b1a1a; }
+
+    /* ── Architecture diagram ─────────────────────────────────────── */
+    .arch-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      padding: 10px 0;
+    }
+    .arch-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+    }
+    .arch-box {
+      border-radius: 7px;
+      padding: 8px 14px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      text-align: center;
+      white-space: nowrap;
+      line-height: 1.3;
+    }
+    .ab-blue   { background: #daeeff; border: 2px solid #5ba8d4; color: #0a3c5c; }
+    .ab-green  { background: #daffef; border: 2px solid #38b885; color: #0a4028; width:100%; text-align:center; }
+    .ab-red    { background: #ffe8e8; border: 2px solid #e06060; color: #6b0000; flex:1; }
+    .ab-gold   { background: #fff5d6; border: 2px solid #d4a017; color: #5c3a00; flex:1; }
+    .ab-purple { background: #f2e8ff; border: 2px solid #a060d4; color: #3a005c; flex:1; }
+    .arch-arrow { color: #888; font-size: 1rem; user-select: none; }
+    .arch-note  { font-size: 0.85rem; color: var(--muted); text-align: center; margin-top: 4px; font-style: italic; }
+
+    /* ── Tech pills ───────────────────────────────────────────────── */
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 8px;
+    }
+    .pill {
+      border-radius: 4px;
+      padding: 3px 9px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .pill-fe  { background: #daeeff; border: 1px solid #5ba8d4; color: #0a3c5c; }
+    .pill-be  { background: #ffe8e8; border: 1px solid #e06060; color: #6b0000; }
+    .pill-rt  { background: #daffef; border: 1px solid #38b885; color: #0a4028; }
+    .pill-ops { background: #fff5d6; border: 1px solid #d4a017; color: #5c3a00; }
+    .pill-lbl {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+    }
+
+    /* ── Logo display ─────────────────────────────────────────────── */
+    .logo-showcase {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 4px 18px rgba(230,57,70,0.35), 0 0 0 2px rgba(230,57,70,0.2);
+    }
+    .logo-showcase img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+    }
+
+    /* ── Team rows ───────────────────────────────────────────────── */
+    .team-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .team-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 900;
+      color: white;
+      flex-shrink: 0;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .av-red    { background: linear-gradient(135deg, #e63946, #9d0208); }
+    .av-blue   { background: linear-gradient(135deg, #4a90d9, #1a5296); }
+    .av-teal   { background: linear-gradient(135deg, #06b88a, #047d5f); }
+    .av-gold   { background: linear-gradient(135deg, #d4a017, #a07010); }
+    .member-name { font-weight: 700; font-size: 1rem; color: var(--text); }
+    .member-role { font-size: 0.9rem; color: var(--red-dark); font-weight: 600; margin-bottom: 2px; }
+    .member-tasks { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
+
+    /* ── Footer band ─────────────────────────────────────────────── */
+    .poster-footer {
+      border-top: 3px solid var(--red);
+      background: var(--red);
+      padding: 12px 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .footer-text {
+      font-size: 0.93rem;
+      color: #ffffff;
+      line-height: 1.5;
+      flex: 1;
+      min-width: 300px;
+    }
+    .footer-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 3px;
+    }
+    .footer-meta,
+    .footer-citation {
+      color: #ffffff;
+      font-size: 0.88rem;
+    }
+    .footer-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .footer-badges {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    .fbadge {
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.5);
+      border-radius: 4px;
+      padding: 3px 10px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #ffffff;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .footer-link {
+      color: #ffffff;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.45);
+      background: rgba(255,255,255,0.12);
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+    }
+    .footer-link:visited,
+    .footer-link:hover,
+    .footer-link:active {
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .footer-inline-link,
+    .footer-inline-link:visited,
+    .footer-inline-link:hover,
+    .footer-inline-link:active {
+      color: #ffffff;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* ── Scenario mini-cards ─────────────────────────────────────── */
+    .scenario-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+    .sc-card {
+      background: #fff8f8;
+      border: 1px solid #f4c4c4;
+      border-radius: 6px;
+      padding: 7px 9px;
+      font-size: 0.9rem;
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 10px;
+      align-items: center;
+    }
+    .sc-thumb {
+      width: 52px;
+      height: 52px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid #e0d0d0;
+      display: block;
+    }
+    .sc-copy {
+      min-width: 0;
+    }
+    .sc-icon { font-size: 1.1rem; }
+    .sc-name { font-weight: 700; color: var(--red-dark); font-size: 0.92rem; }
+    .sc-desc { color: var(--muted); font-size: 0.86rem; line-height: 1.4; }
+
+  </style>
+</head>
+<body>
+<div class="poster">
+
+  <!-- ══════════════════════ HEADER ════════════════════════════════ -->
+  <header class="poster-header">
+    <div class="header-spacer"></div>
+    <div class="header-center">
+      <div class="poster-title">S.I.R.E. — Simulated Incident Response Environment</div>
+      <div class="poster-subtitle">Team Nibble &nbsp;·&nbsp; NSCC</div>
+      <div class="poster-tagline">A real-time emergency response training platform</div>
+    </div>
+    <div class="header-qr">
+      <img src="data:image/png;base64,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" alt="QR — github.com/Anaxagorius/S.I.R.E." />
+      <div class="qr-label">Scan to explore</div>
+    </div>
+  </header>
+
+  <!-- ══════════════════════ 3-COLUMN BODY ═════════════════════════ -->
+  <div class="poster-body">
+
+    <!-- ════ LEFT COLUMN ════ -->
+    <div class="col col-left">
+
+      <div class="sec-heading">Features</div>
+      <ul class="bullet-list">
+        <li>Real-time event broadcasting via WebSocket</li>
+        <li>Scenario loading with timed, auto-escalating injects</li>
+        <li>Admin controls — start, pause, escalate, end</li>
+        <li>Trainee decision and action submission</li>
+        <li>Branching scenario logic with severity levels</li>
+        <li>Session key generation (6-character codes)</li>
+        <li>Live progress monitoring for instructors</li>
+        <li>Feedback and post-exercise results display</li>
+        <li>Colour-coded severity indicators (info / warning / critical)</li>
+        <li>Multi-user rooms with automatic reconnection</li>
+      </ul>
+
+      <hr class="sec-divider"/>
+
+      <div class="sec-heading">Scope</div>
+      <ul class="bullet-list">
+        <li>Full-stack JS web application</li>
+        <li>Admin dashboard + trainee interface</li>
+        <li>Real-time WebSocket communication</li>
+        <li>Eight complete emergency scenarios</li>
+        <li>Session-based access (admin/trainee)</li>
+        <li>Free-tier cloud deployment</li>
+        <li>Documentation + testing artefacts</li>
+      </ul>
+
+      <hr class="sec-divider"/>
+
+      <div class="sec-heading">Roles</div>
+      <div class="team-row">
+        <div class="avatar av-red">TB</div>
+        <div>
+          <div class="member-role">Backend &amp; Real-Time Lead</div>
+          <div class="member-name">Tom Burchell</div>
+          <div class="member-tasks">Socket.IO engine · scenario logic · server architecture · CI/CD · cloud deployment</div>
+        </div>
+      </div>
+      <div class="team-row">
+        <div class="avatar av-blue">LW</div>
+        <div>
+          <div class="member-role">Frontend &amp; UI/UX Lead</div>
+          <div class="member-name">Leon Wasiliew</div>
+          <div class="member-tasks">React UI · layouts · real-time state updates · responsive design</div>
+        </div>
+      </div>
+      <div class="team-row">
+        <div class="avatar av-teal">JH</div>
+        <div>
+          <div class="member-role">Script Master / QA</div>
+          <div class="member-name">John Hay</div>
+          <div class="member-tasks">Scenario writing · integration testing · accessibility review</div>
+        </div>
+      </div>
+      <div class="team-row">
+        <div class="avatar av-gold">KP</div>
+        <div>
+          <div class="member-role">Project Manager</div>
+          <div class="member-name">Kael Payette</div>
+          <div class="member-tasks">Coordination · documentation · Git workflow · standards</div>
+        </div>
+      </div>
+
+    </div><!-- /col-left -->
+
+    <!-- ════ CENTRE COLUMN ════ -->
+    <div class="col col-mid">
+
+      <div class="sec-heading">Description</div>
+      <p class="body-text description-text">
+        A full-stack, real-time simulation platform for practising emergency response scenarios.
+        Built with Node.js, Express, Socket.IO, and React, SIRE enables instructors to run
+        dynamic, escalating incident simulations while trainees respond in real time.
+      </p>
+
+      <hr class="sec-divider"/>
+
+      <div class="sec-heading">Architecture (ERD)</div>
+      <div class="content-box erd-box">
+        <div class="arch-wrap">
+
+          <div class="arch-row">
+            <div class="arch-box ab-blue"> Instructor<br/>Admin Dashboard</div>
+            <div class="arch-arrow">⬦</div>
+            <div class="arch-box ab-blue"> Trainees<br/>React UI (×10+)</div>
+          </div>
+
+          <div class="arch-row" style="margin:4px 0; color:#666; font-size:1.03rem;">↕ WebSocket / HTTP</div>
+
+          <div class="arch-row">
+            <div class="arch-box ab-green">
+               Socket.IO Server &nbsp;·&nbsp; Express REST API &nbsp;·&nbsp; Node.js 20
+            </div>
+          </div>
+
+          <div class="arch-row" style="margin:4px 0; color:#666; font-size:1.03rem;">↕</div>
+
+          <div class="arch-row" style="gap:8px; width:100%">
+            <div class="arch-box ab-red"> In-Memory<br/>Session Store</div>
+            <div class="arch-box ab-gold"> Escalation<br/>Engine</div>
+            <div class="arch-box ab-purple"> Scenario<br/>Registry (8)</div>
+          </div>
+
+          <div class="arch-note">
+            Rooms isolate sessions &nbsp;·&nbsp; Events broadcast to all participants &nbsp;·&nbsp; Automatic timeline progression
+          </div>
+        </div>
+      </div>
+
+      <hr class="sec-divider"/>
+
+      <div class="sec-heading">Training Scenarios</div>
+      <div class="scenario-row">
+        <div class="sc-card">
+          <img class="sc-thumb" src="../Planning/AI-Pics-Kael/Security/Active-Threat-School.png" alt="Active threat scenario" />
+          <div class="sc-copy"><span class="sc-name">Active Threat</span><br/><span class="sc-desc">Lockdown, sweep, all-clear procedures</span></div>
+        </div>
+        <div class="sc-card">
+          <img class="sc-thumb" src="../Planning/AI-Pics-Kael/Enviromental/Fire/HouseFire.jpg" alt="Fire emergency scenario" />
+          <div class="sc-copy"><span class="sc-name">Fire Emergency</span><br/><span class="sc-desc">Alarm, evacuation, fire dept. handover</span></div>
+        </div>
+        <div class="sc-card">
+          <img class="sc-thumb" src="../Planning/AI-Pics-Kael/Enviromental/Enviroment-Damage/Enviromental-Damage-Neighbourhood.png" alt="Flood scenario" />
+          <div class="sc-copy"><span class="sc-name">Flood</span><br/><span class="sc-desc">Water intrusion, system protection</span></div>
+        </div>
+        <div class="sc-card">
+          <img class="sc-thumb" src="../Planning/AI-Pics-Kael/Enviromental/Electrical-Failiure.jpg" alt="Cyber attack scenario" />
+          <div class="sc-copy"><span class="sc-name">Cyber Attack</span><br/><span class="sc-desc">Ransomware, network isolation, IR</span></div>
+        </div>
+        <div class="sc-card">
+          <img class="sc-thumb" src="../Planning/AI-Pics-Kael/Enviromental/No-Power-Area.png" alt="Power outage scenario" />
+          <div class="sc-copy"><span class="sc-name">Power Outage</span><br/><span class="sc-desc">UPS/generator failover, critical systems</span></div>
+        </div>
+        <div class="sc-card">
+          <img class="sc-thumb" src="../Planning/AI-Pics-Kael/Enviromental/Extreme-Weather.jpg" alt="Severe weather scenario" />
+          <div class="sc-copy"><span class="sc-name">Severe Weather</span><br/><span class="sc-desc">Shelter-in-place, facility protection</span></div>
+        </div>
+        <div class="sc-card">
+          <img class="sc-thumb" src="../Planning/AI-Pics-Kael/Medical/Unconscious/Unconscious-Person-Office.png" alt="Medical emergency scenario" />
+          <div class="sc-copy"><span class="sc-name">Medical Emergency</span><br/><span class="sc-desc">Cardiac event, first-aid, EMS coord.</span></div>
+        </div>
+        <div class="sc-card">
+          <img class="sc-thumb" src="../Planning/AI-Pics-Kael/Enviromental/Toxic-Materials/Toxic-Materials-Factory.png" alt="Hazmat spill scenario" />
+          <div class="sc-copy"><span class="sc-name">Hazmat Spill</span><br/><span class="sc-desc">Containment, PPE, decontamination</span></div>
+        </div>
+      </div>
+
+    </div><!-- /col-mid -->
+
+    <!-- ════ RIGHT COLUMN ════ -->
+    <div class="col col-right">
+
+      <div class="sec-heading">Logo</div>
+      <div class="logo-showcase" style="margin-bottom:6px">
+        <img src="Imgs/About.png"
+             alt="S.I.R.E. — Simulated Incident Response Environment Logo" />
+      </div>
+
+      <hr class="sec-divider"/>
+
+      <div class="sec-heading">SWOT</div>
+      <div class="swot-grid">
+        <div class="swot-cell swot-s">
+          <strong>Strengths</strong>
+          Real-time WebSocket communication; full-stack JS; modular scenario system; session isolation; no database dependency
+        </div>
+        <div class="swot-cell swot-w">
+          <strong>Weaknesses</strong>
+          In-memory storage (no persistence on restart); no persistent user accounts; WAN latency risk
+        </div>
+        <div class="swot-cell swot-o">
+          <strong>Opportunities</strong>
+          Persistent session logs; mobile-responsive client; expanded scenario library; external LMS integration
+        </div>
+        <div class="swot-cell swot-t">
+          <strong>Threats</strong>
+          Free-tier cloud cold-starts; browser WebSocket restrictions; server restart clears active sessions
+        </div>
+      </div>
+
+      <hr class="sec-divider"/>
+
+      <div class="sec-heading">Technology Stack</div>
+
+      <div class="pill-lbl">Frontend</div>
+      <div class="pill-row">
+        <span class="pill pill-fe">React 19</span>
+        <span class="pill pill-fe">React Router 7</span>
+        <span class="pill pill-fe">Vite 7</span>
+        <span class="pill pill-fe">Socket.IO Client 4</span>
+      </div>
+
+      <div class="pill-lbl">Backend</div>
+      <div class="pill-row">
+        <span class="pill pill-be">Node.js 20</span>
+        <span class="pill pill-be">Express 4</span>
+        <span class="pill pill-be">Socket.IO 4</span>
+        <span class="pill pill-be">ES Modules</span>
+        <span class="pill pill-be">Nanoid</span>
+      </div>
+
+      <div class="pill-lbl">Real-Time</div>
+      <div class="pill-row">
+        <span class="pill pill-rt">WebSocket</span>
+        <span class="pill pill-rt">Long-Poll Fallback</span>
+        <span class="pill pill-rt">Room Isolation</span>
+        <span class="pill pill-rt">Auto-Reconnect</span>
+      </div>
+
+      <div class="pill-lbl">DevOps &amp; Deployment</div>
+      <div class="pill-row">
+        <span class="pill pill-ops">Docker (Alpine)</span>
+        <span class="pill pill-ops">GitHub Actions CI</span>
+        <span class="pill pill-ops">Railway</span>
+        <span class="pill pill-ops">Render</span>
+        <span class="pill pill-ops">Heroku</span>
+      </div>
+
+      <hr class="sec-divider"/>
+
+      <div class="sec-heading">Key Metrics</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div class="content-box box-pink" style="text-align:center;padding:10px 6px">
+          <div style="font-family:'Montserrat',sans-serif;font-size:1.6rem;font-weight:900;color:#e63946">8</div>
+          <div style="font-size:0.88rem;color:#888;text-transform:uppercase;letter-spacing:0.05em">Scenarios</div>
+        </div>
+        <div class="content-box box-blue" style="text-align:center;padding:10px 6px">
+          <div style="font-family:'Montserrat',sans-serif;font-size:1.6rem;font-weight:900;color:#4a90d9">10+</div>
+          <div style="font-size:0.88rem;color:#888;text-transform:uppercase;letter-spacing:0.05em">Trainees/Session</div>
+        </div>
+        <div class="content-box box-green" style="text-align:center;padding:10px 6px">
+          <div style="font-family:'Montserrat',sans-serif;font-size:1.4rem;font-weight:900;color:#06b88a">&lt;300ms</div>
+          <div style="font-size:0.88rem;color:#888;text-transform:uppercase;letter-spacing:0.05em">Event Latency</div>
+        </div>
+        <div class="content-box box-yellow" style="text-align:center;padding:10px 6px">
+          <div style="font-family:'Montserrat',sans-serif;font-size:1.6rem;font-weight:900;color:#d4a017">12</div>
+          <div style="font-size:0.88rem;color:#888;text-transform:uppercase;letter-spacing:0.05em">Week Development</div>
+        </div>
+      </div>
+
+    </div><!-- /col-right -->
+
+  </div><!-- /poster-body -->
+
+  <!-- ══════════════════════ FOOTER ════════════════════════════════ -->
+  <footer class="poster-footer">
+    <div class="footer-text">
+      <div class="footer-title">S.I.R.E. — Simulated Incident Response Environment</div>
+      <div class="footer-meta">NSCC · PROG 3300 · Instructor: Alfred Parkes | Team: Tom Burchell · Leon Wasiliew · John Hay · Kael Payette</div>
+      <div class="footer-citation">Scenario images: <a class="footer-inline-link" href="https://gemini.google.com/app" target="_blank">Gemini</a></div>
+    </div>
+    <div class="footer-right">
+      <div class="footer-badges">
+        <span class="fbadge">Node.js 20</span>
+        <span class="fbadge">React 19</span>
+        <span class="fbadge">Socket.IO 4</span>
+        <span class="fbadge">Docker</span>
+      </div>
+      <a class="footer-link" href="https://github.com/Anaxagorius/S.I.R.E." target="_blank">github.com/Anaxagorius/S.I.R.E.</a>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

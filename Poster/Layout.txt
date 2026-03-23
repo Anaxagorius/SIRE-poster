@@ -1,0 +1,19 @@
+[Large Title + Logo]
+
+[Left Column]
+- Project Description
+- Scope
+- Roles
+
+[Center Column]
+- Feature List
+- ERD Placeholder
+- DFD Replacement Placeholder
+
+[Right Column]
+- Mockups Placeholder
+- Milestones Timeline
+- SWOT Grid
+
+[Footer]
+Team Nibble • NSCC IT Programming • 2026
