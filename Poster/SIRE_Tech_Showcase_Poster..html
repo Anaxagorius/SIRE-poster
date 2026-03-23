@@ -467,6 +467,250 @@
     .sc-name { font-weight: 700; color: var(--red-dark); font-size: 0.92rem; }
     .sc-desc { color: var(--muted); font-size: 0.86rem; line-height: 1.4; }
 
+
+    /* ── App Screenshot Mockups ──────────────────────────────────── */
+    .app-screenshots {
+      border-top: 2px solid var(--border);
+      padding: 18px 30px 22px;
+      background: #f5f5ff;
+    }
+    .mockup-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 14px;
+      align-items: start;
+    }
+    .mock-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .mock-frame {
+      width: 100%;
+      border-radius: 7px;
+      overflow: hidden;
+      box-shadow: 0 3px 14px rgba(0,0,0,0.28);
+      border: 1px solid #aaa;
+    }
+    .mock-chrome {
+      background: #d4d4d4;
+      padding: 4px 6px;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .mock-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    .mock-dot-r { background: #ff5f57; }
+    .mock-dot-y { background: #ffbd2e; }
+    .mock-dot-g { background: #28c840; }
+    .mock-url-bar {
+      flex: 1;
+      background: #f0f0f0;
+      border-radius: 3px;
+      font-size: 0.55rem;
+      color: #555;
+      padding: 1px 5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-left: 4px;
+    }
+    .mock-body {
+      background: #242424;
+      display: flex;
+      height: 150px;
+      overflow: hidden;
+    }
+    .mock-left {
+      width: 26%;
+      background: #1a1a1a;
+      border-right: 1px solid #333;
+      padding: 5px 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      flex-shrink: 0;
+    }
+    .mock-logo {
+      width: 100%;
+      max-width: 50px;
+      height: auto;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .mock-sidebar-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.5rem;
+      font-weight: 700;
+      color: #e0e0e0;
+      text-align: center;
+      line-height: 1.3;
+    }
+    .mock-right {
+      flex: 1;
+      padding: 6px 7px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      overflow: hidden;
+    }
+    .mock-btn {
+      border-radius: 4px;
+      padding: 3px 6px;
+      font-size: 0.52rem;
+      font-weight: 700;
+      text-align: center;
+      color: white;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .mock-btn-primary { background: #646cff; }
+    .mock-btn-dark    { background: #2a2a2a; border: 1px solid #555; }
+    .mock-card {
+      background: #2e2e2e;
+      border-radius: 4px;
+      padding: 4px 5px;
+      font-size: 0.5rem;
+      color: #ccc;
+      line-height: 1.4;
+    }
+    .mock-card-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: #fff;
+      font-size: 0.55rem;
+      margin-bottom: 2px;
+    }
+    .mock-input {
+      background: #1a1a1a;
+      border: 1px solid #555;
+      border-radius: 3px;
+      padding: 3px 5px;
+      font-size: 0.5rem;
+      color: #888;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .mock-label-sm {
+      font-size: 0.49rem;
+      color: #aaa;
+      margin-bottom: 1px;
+    }
+    .mock-carousel {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 3px;
+      flex: 1;
+      overflow: hidden;
+    }
+    .mock-carousel-item {
+      border-radius: 3px;
+      overflow: hidden;
+      background: #333;
+    }
+    .mock-carousel-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .mock-option-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+    }
+    .mock-option {
+      background: #2e2e2e;
+      border: 1px solid #555;
+      border-radius: 3px;
+      padding: 3px;
+      font-size: 0.45rem;
+      color: #ddd;
+      line-height: 1.3;
+    }
+    .mock-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--red-dark);
+      text-align: center;
+      margin-top: 6px;
+    }
+    .mock-timer {
+      background: #2e2e2e;
+      border-radius: 4px;
+      padding: 3px 5px;
+      text-align: center;
+      color: #e0e0e0;
+      font-size: 0.48rem;
+      margin-top: 2px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .mock-timer-val {
+      display: block;
+      font-size: 0.78rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: #fff;
+    }
+    .mock-sire-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: white;
+      text-align: center;
+      line-height: 1.1;
+    }
+    .mock-sire-sub {
+      font-size: 0.46rem;
+      color: #aaa;
+      text-align: center;
+      line-height: 1.4;
+      margin-top: 3px;
+    }
+    .mock-select {
+      background: #1a1a1a;
+      border: 1px solid #555;
+      border-radius: 3px;
+      padding: 3px 5px;
+      font-size: 0.5rem;
+      color: #aaa;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .mock-session-key {
+      background: #1e1e3a;
+      border: 1px solid #646cff;
+      border-radius: 4px;
+      padding: 4px 5px;
+      font-size: 0.47rem;
+      color: #9da5ff;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .mock-session-key strong {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .mock-about-text {
+      font-size: 0.42rem;
+      color: #777;
+      line-height: 1.4;
+      text-align: center;
+    }
+    .mock-about-head {
+      font-size: 0.5rem;
+      font-weight: 700;
+      color: #bbb;
+      text-align: center;
+    }
+
   </style>
 </head>
 <body>
@@ -606,35 +850,35 @@
       <div class="sec-heading">Training Scenarios</div>
       <div class="scenario-row">
         <div class="sc-card">
-          <img class="sc-thumb" src="../Planning/AI-Pics-Kael/Security/Active-Threat-School.png" alt="Active threat scenario" />
+          <img class="sc-thumb" src="AI-Pics-Kael/Security/Active-Threat-School.png" alt="Active threat scenario" />
           <div class="sc-copy"><span class="sc-name">Active Threat</span><br/><span class="sc-desc">Lockdown, sweep, all-clear procedures</span></div>
         </div>
         <div class="sc-card">
-          <img class="sc-thumb" src="../Planning/AI-Pics-Kael/Enviromental/Fire/HouseFire.jpg" alt="Fire emergency scenario" />
+          <img class="sc-thumb" src="AI-Pics-Kael/Enviromental/Fire/HouseFire.jpg" alt="Fire emergency scenario" />
           <div class="sc-copy"><span class="sc-name">Fire Emergency</span><br/><span class="sc-desc">Alarm, evacuation, fire dept. handover</span></div>
         </div>
         <div class="sc-card">
-          <img class="sc-thumb" src="../Planning/AI-Pics-Kael/Enviromental/Enviroment-Damage/Enviromental-Damage-Neighbourhood.png" alt="Flood scenario" />
+          <img class="sc-thumb" src="AI-Pics-Kael/Enviromental/Enviroment-Damage/Enviromental-Damage-Neighbourhood.png" alt="Flood scenario" />
           <div class="sc-copy"><span class="sc-name">Flood</span><br/><span class="sc-desc">Water intrusion, system protection</span></div>
         </div>
         <div class="sc-card">
-          <img class="sc-thumb" src="../Planning/AI-Pics-Kael/Enviromental/Electrical-Failiure.jpg" alt="Cyber attack scenario" />
+          <img class="sc-thumb" src="AI-Pics-Kael/Enviromental/Electrical-Failiure.jpg" alt="Cyber attack scenario" />
           <div class="sc-copy"><span class="sc-name">Cyber Attack</span><br/><span class="sc-desc">Ransomware, network isolation, IR</span></div>
         </div>
         <div class="sc-card">
-          <img class="sc-thumb" src="../Planning/AI-Pics-Kael/Enviromental/No-Power-Area.png" alt="Power outage scenario" />
+          <img class="sc-thumb" src="AI-Pics-Kael/Enviromental/No-Power-Area.png" alt="Power outage scenario" />
           <div class="sc-copy"><span class="sc-name">Power Outage</span><br/><span class="sc-desc">UPS/generator failover, critical systems</span></div>
         </div>
         <div class="sc-card">
-          <img class="sc-thumb" src="../Planning/AI-Pics-Kael/Enviromental/Extreme-Weather.jpg" alt="Severe weather scenario" />
+          <img class="sc-thumb" src="AI-Pics-Kael/Enviromental/Extreme-Weather.jpg" alt="Severe weather scenario" />
           <div class="sc-copy"><span class="sc-name">Severe Weather</span><br/><span class="sc-desc">Shelter-in-place, facility protection</span></div>
         </div>
         <div class="sc-card">
-          <img class="sc-thumb" src="../Planning/AI-Pics-Kael/Medical/Unconscious/Unconscious-Person-Office.png" alt="Medical emergency scenario" />
+          <img class="sc-thumb" src="AI-Pics-Kael/Medical/Unconscious/Unconscious-Person-Office.png" alt="Medical emergency scenario" />
           <div class="sc-copy"><span class="sc-name">Medical Emergency</span><br/><span class="sc-desc">Cardiac event, first-aid, EMS coord.</span></div>
         </div>
         <div class="sc-card">
-          <img class="sc-thumb" src="../Planning/AI-Pics-Kael/Enviromental/Toxic-Materials/Toxic-Materials-Factory.png" alt="Hazmat spill scenario" />
+          <img class="sc-thumb" src="AI-Pics-Kael/Enviromental/Toxic-Materials/Toxic-Materials-Factory.png" alt="Hazmat spill scenario" />
           <div class="sc-copy"><span class="sc-name">Hazmat Spill</span><br/><span class="sc-desc">Containment, PPE, decontamination</span></div>
         </div>
       </div>
@@ -735,6 +979,189 @@
     </div><!-- /col-right -->
 
   </div><!-- /poster-body -->
+
+  <!-- ══════════════════════ APP MOCKUPS ═══════════════════════════ -->
+  <section class="app-screenshots">
+    <div class="sec-heading">Application Mockups</div>
+    <div class="mockup-grid">
+
+      <!-- 1. Home Page -->
+      <div class="mock-wrap">
+        <div class="mock-frame">
+          <div class="mock-chrome">
+            <div class="mock-dot mock-dot-r"></div>
+            <div class="mock-dot mock-dot-y"></div>
+            <div class="mock-dot mock-dot-g"></div>
+            <div class="mock-url-bar">localhost:5173/</div>
+          </div>
+          <div class="mock-body">
+            <div class="mock-left">
+              <img class="mock-logo" src="Imgs/About.png" alt="S.I.R.E. logo" />
+              <div class="mock-btn mock-btn-primary">Login</div>
+              <div class="mock-btn mock-btn-dark" style="margin-top:2px">Admin</div>
+              <div class="mock-about-head" style="margin-top:5px">About S.I.R.E.</div>
+              <div class="mock-about-text">Emergency response training simulation for instructors and trainees.</div>
+            </div>
+            <div class="mock-right" style="padding:4px">
+              <div class="mock-carousel">
+                <div class="mock-carousel-item"><img src="AI-Pics-Kael/Security/Active-Threat-School.png" alt="Active threat"/></div>
+                <div class="mock-carousel-item"><img src="AI-Pics-Kael/Enviromental/Fire/HouseFire.jpg" alt="Fire"/></div>
+                <div class="mock-carousel-item"><img src="AI-Pics-Kael/Medical/Unconscious/Unconscious-Person-Office.png" alt="Medical"/></div>
+                <div class="mock-carousel-item"><img src="AI-Pics-Kael/Enviromental/Extreme-Weather.jpg" alt="Weather"/></div>
+                <div class="mock-carousel-item"><img src="AI-Pics-Kael/Enviromental/No-Power-Area.png" alt="Power outage"/></div>
+                <div class="mock-carousel-item"><img src="AI-Pics-Kael/Enviromental/Toxic-Materials/Toxic-Materials-Factory.png" alt="Hazmat"/></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mock-title">Home Page</div>
+      </div>
+
+      <!-- 2. Login Page -->
+      <div class="mock-wrap">
+        <div class="mock-frame">
+          <div class="mock-chrome">
+            <div class="mock-dot mock-dot-r"></div>
+            <div class="mock-dot mock-dot-y"></div>
+            <div class="mock-dot mock-dot-g"></div>
+            <div class="mock-url-bar">localhost:5173/login</div>
+          </div>
+          <div class="mock-body">
+            <div class="mock-left" style="width:34%;justify-content:center">
+              <div class="mock-sire-title">S.I.R.E.</div>
+              <div class="mock-sire-sub">Simulated Incident<br/>Response Environment</div>
+            </div>
+            <div class="mock-right" style="justify-content:center">
+              <div class="mock-label-sm">Email *</div>
+              <div class="mock-input">Enter your email...</div>
+              <div class="mock-label-sm" style="margin-top:5px">Password *</div>
+              <div class="mock-input">Enter your password...</div>
+              <div class="mock-about-text" style="margin-top:4px">Don't have an account? <span style="color:#646cff">Sign up here</span>.</div>
+              <div class="mock-btn mock-btn-primary" style="margin-top:6px">Login</div>
+            </div>
+          </div>
+        </div>
+        <div class="mock-title">Login Page</div>
+      </div>
+
+      <!-- 3. Admin Dashboard -->
+      <div class="mock-wrap">
+        <div class="mock-frame">
+          <div class="mock-chrome">
+            <div class="mock-dot mock-dot-r"></div>
+            <div class="mock-dot mock-dot-y"></div>
+            <div class="mock-dot mock-dot-g"></div>
+            <div class="mock-url-bar">localhost:5173/admin-dashboard</div>
+          </div>
+          <div class="mock-body">
+            <div class="mock-left">
+              <img class="mock-logo" src="Imgs/About.png" alt="S.I.R.E. logo" />
+              <div class="mock-sidebar-title">Administrator<br/>Panel</div>
+            </div>
+            <div class="mock-right">
+              <div class="mock-card">
+                <div class="mock-card-title">Waiting for Trainees</div>
+                <div>2 / 10 joined</div>
+              </div>
+              <div class="mock-card">
+                <div style="font-size:0.46rem;color:#aaa">• Trainee 1</div>
+                <div style="font-size:0.46rem;color:#aaa">• Trainee 2</div>
+              </div>
+              <div class="mock-btn mock-btn-primary">Start Session</div>
+            </div>
+          </div>
+        </div>
+        <div class="mock-title">Admin Dashboard</div>
+      </div>
+
+      <!-- 4. Create Session (Scenario Page 1) -->
+      <div class="mock-wrap">
+        <div class="mock-frame">
+          <div class="mock-chrome">
+            <div class="mock-dot mock-dot-r"></div>
+            <div class="mock-dot mock-dot-y"></div>
+            <div class="mock-dot mock-dot-g"></div>
+            <div class="mock-url-bar">localhost:5173/create-session</div>
+          </div>
+          <div class="mock-body">
+            <div class="mock-left">
+              <img class="mock-logo" src="Imgs/About.png" alt="S.I.R.E. logo" />
+              <div class="mock-sidebar-title">Create<br/>Session</div>
+            </div>
+            <div class="mock-right" style="justify-content:center">
+              <div class="mock-label-sm">Select Scenario</div>
+              <div class="mock-select">&#9660; Active Threat</div>
+              <div class="mock-btn mock-btn-primary" style="margin-top:7px">Create Session</div>
+              <div class="mock-session-key" style="margin-top:7px">
+                Session Key<br/>
+                <strong>A3K9X2</strong>
+                Share with trainees to join
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mock-title">Create Session</div>
+      </div>
+
+      <!-- 5. Trainee Interface (Scenario Page 2) -->
+      <div class="mock-wrap">
+        <div class="mock-frame">
+          <div class="mock-chrome">
+            <div class="mock-dot mock-dot-r"></div>
+            <div class="mock-dot mock-dot-y"></div>
+            <div class="mock-dot mock-dot-g"></div>
+            <div class="mock-url-bar">localhost:5173/trainee</div>
+          </div>
+          <div class="mock-body">
+            <div class="mock-left">
+              <img class="mock-logo" src="Imgs/About.png" alt="S.I.R.E. logo" />
+              <div class="mock-sidebar-title">Trainee<br/>Interface</div>
+              <div class="mock-timer">Time<span class="mock-timer-val">02:34</span></div>
+            </div>
+            <div class="mock-right">
+              <div class="mock-card">
+                <div class="mock-card-title">Active Threat — Level 2</div>
+                <div>A threat reported in the east wing. Personnel are sheltering in place.</div>
+                <div style="color:#fff;margin-top:3px;font-size:0.49rem"><strong>What is your immediate response?</strong></div>
+              </div>
+              <div class="mock-option-row">
+                <div class="mock-option">A. Lock down &amp; alert security</div>
+                <div class="mock-option">B. Evacuate all personnel</div>
+                <div class="mock-option">C. Contact law enforcement</div>
+                <div class="mock-option">D. Shelter in place</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mock-title">Trainee Interface</div>
+      </div>
+
+      <!-- 6. Join Session (Scenario Page 3) -->
+      <div class="mock-wrap">
+        <div class="mock-frame">
+          <div class="mock-chrome">
+            <div class="mock-dot mock-dot-r"></div>
+            <div class="mock-dot mock-dot-y"></div>
+            <div class="mock-dot mock-dot-g"></div>
+            <div class="mock-url-bar">localhost:5173/join-session</div>
+          </div>
+          <div class="mock-body">
+            <div class="mock-left">
+              <img class="mock-logo" src="Imgs/About.png" alt="S.I.R.E. logo" />
+              <div class="mock-sidebar-title">Join<br/>Session</div>
+            </div>
+            <div class="mock-right" style="justify-content:center">
+              <div class="mock-label-sm">Session Key</div>
+              <div class="mock-input">Enter session key...</div>
+              <div class="mock-btn mock-btn-primary" style="margin-top:8px">Join Session</div>
+            </div>
+          </div>
+        </div>
+        <div class="mock-title">Join Session</div>
+      </div>
+
+    </div>
+  </section>
 
   <!-- ══════════════════════ FOOTER ════════════════════════════════ -->
   <footer class="poster-footer">
