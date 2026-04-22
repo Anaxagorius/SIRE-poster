@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valley Credit Union — IT Policy &amp; Acceptable Use Policy</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600;700&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #003366;
+      --navy-dark: #001f45;
+      --gold:      #c8962b;
+      --gold-lt:   #f5e0a8;
+      --red:       #c0392b;
+      --red-lt:    #fdecea;
+      --green:     #1a7a4a;
+      --green-lt:  #e6f5ed;
+      --blue-lt:   #e8f0fa;
+      --amber:     #d4780a;
+      --amber-lt:  #fff3e0;
+      --text:      #1a1a2e;
+      --muted:     #4a5568;
+      --border:    #ccd4e0;
+      --bg:        #ffffff;
+      --section-bg:#f7f9fc;
+    }
+
+    body {
+      font-family: 'Open Sans', Arial, sans-serif;
+      background: #dde3ee;
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 13px;
+    }
+
+    /* ── Print ─────────────────────────────────────────────────────── */
+    @media print {
+      @page { size: A4 portrait; margin: 12mm; }
+      html, body { background: #fff !important; font-size: 11px; }
+      .doc-wrapper { margin: 0 !important; box-shadow: none !important;
+                     max-width: none !important; border-radius: 0 !important; }
+      .page-break { page-break-before: always; }
+      .no-print { display: none !important; }
+    }
+
+    /* ── Document shell ─────────────────────────────────────────────── */
+    .doc-wrapper {
+      max-width: 960px;
+      margin: 28px auto;
+      background: var(--bg);
+      border: 2px solid #aabbcc;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 6px 32px rgba(0,51,102,0.20);
+    }
+
+    /* ── Header ─────────────────────────────────────────────────────── */
+    .doc-header {
+      background: var(--navy);
+      color: #fff;
+      padding: 22px 36px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 20px;
+    }
+    .logo-shield {
+      width: 62px; height: 62px;
+      background: var(--gold);
+      border-radius: 50% 50% 48% 48% / 55% 55% 45% 45%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.9rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.35);
+      flex-shrink: 0;
+    }
+    .header-title h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.55rem; font-weight: 900;
+      letter-spacing: 0.5px;
+      line-height: 1.15;
+    }
+    .header-title p {
+      font-size: 0.82rem; color: #b8cbdf; margin-top: 3px;
+    }
+    .header-meta {
+      text-align: right; font-size: 0.78rem; color: #b8cbdf; line-height: 1.7;
+    }
+    .header-meta strong { color: var(--gold); font-size: 0.85rem; }
+
+    /* ── Gold rule ──────────────────────────────────────────────────── */
+    .gold-rule { height: 4px; background: var(--gold); }
+
+    /* ── Document info bar ──────────────────────────────────────────── */
+    .info-bar {
+      background: var(--navy-dark);
+      color: #c8d8ec;
+      display: flex; flex-wrap: wrap; gap: 0;
+      font-size: 0.76rem;
+    }
+    .info-bar span {
+      padding: 7px 18px;
+      border-right: 1px solid #1a3a5c;
+    }
+    .info-bar span:last-child { border-right: none; }
+    .info-bar strong { color: var(--gold-lt); }
+
+    /* ── Body layout ─────────────────────────────────────────────────── */
+    .doc-body { padding: 30px 36px 36px; }
+
+    /* ── Section headers ─────────────────────────────────────────────── */
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.05rem; font-weight: 700;
+      color: var(--navy);
+      border-left: 5px solid var(--gold);
+      padding: 6px 0 6px 12px;
+      margin: 28px 0 12px;
+      background: var(--blue-lt);
+      border-radius: 0 4px 4px 0;
+    }
+    .section-title.red-bar  { border-left-color: var(--red);   background: var(--red-lt);   color: var(--red); }
+    .section-title.green-bar{ border-left-color: var(--green); background: var(--green-lt); color: var(--green); }
+    .section-title.amber-bar{ border-left-color: var(--amber); background: var(--amber-lt); color: var(--amber); }
+
+    .subsection-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.88rem; font-weight: 700;
+      color: var(--navy);
+      margin: 18px 0 7px;
+      padding-bottom: 3px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── Policy number badge ─────────────────────────────────────────── */
+    .policy-num {
+      display: inline-block;
+      background: var(--navy);
+      color: var(--gold);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700; font-size: 0.72rem;
+      padding: 2px 8px;
+      border-radius: 12px;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+
+    /* ── Policy cards ────────────────────────────────────────────────── */
+    .policy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 14px;
+      margin: 14px 0;
+    }
+    .policy-card {
+      background: var(--section-bg);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--navy);
+      border-radius: 6px;
+      padding: 13px 15px;
+    }
+    .policy-card.gold-top  { border-top-color: var(--gold); }
+    .policy-card.red-top   { border-top-color: var(--red); }
+    .policy-card.green-top { border-top-color: var(--green); }
+    .policy-card.amber-top { border-top-color: var(--amber); }
+    .policy-card h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem; font-weight: 700;
+      color: var(--navy); margin-bottom: 6px;
+    }
+    .policy-card.red-top   h4 { color: var(--red);   }
+    .policy-card.green-top h4 { color: var(--green); }
+    .policy-card.amber-top h4 { color: var(--amber); }
+
+    /* ── Lists ───────────────────────────────────────────────────────── */
+    ul, ol { padding-left: 18px; margin: 6px 0 10px; }
+    li { margin-bottom: 4px; }
+    ul li::marker { color: var(--gold); }
+
+    /* ── Tables ──────────────────────────────────────────────────────── */
+    table { width: 100%; border-collapse: collapse; margin: 10px 0 16px; font-size: 0.82rem; }
+    thead th {
+      background: var(--navy); color: #fff;
+      font-family: 'Montserrat', sans-serif; font-weight: 600;
+      padding: 8px 10px; text-align: left;
+    }
+    tbody tr:nth-child(even) { background: var(--section-bg); }
+    tbody td { padding: 7px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .badge {
+      display: inline-block;
+      padding: 2px 9px; border-radius: 10px;
+      font-size: 0.72rem; font-weight: 700;
+    }
+    .badge-red    { background: var(--red-lt);   color: var(--red);   }
+    .badge-amber  { background: var(--amber-lt); color: var(--amber); }
+    .badge-green  { background: var(--green-lt); color: var(--green); }
+    .badge-navy   { background: var(--blue-lt);  color: var(--navy);  }
+
+    /* ── Alert boxes ─────────────────────────────────────────────────── */
+    .alert {
+      border-left: 4px solid var(--red);
+      background: var(--red-lt);
+      padding: 10px 14px; margin: 12px 0;
+      border-radius: 0 5px 5px 0; font-size: 0.82rem;
+    }
+    .alert-amber {
+      border-left-color: var(--amber);
+      background: var(--amber-lt);
+    }
+    .alert-green {
+      border-left-color: var(--green);
+      background: var(--green-lt);
+    }
+    .alert strong { display: block; margin-bottom: 3px; font-family: 'Montserrat', sans-serif; }
+
+    /* ── Signature block ─────────────────────────────────────────────── */
+    .sig-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px; margin: 20px 0;
+    }
+    .sig-box { border-top: 2px solid var(--navy); padding-top: 8px; font-size: 0.78rem; }
+    .sig-box p { color: var(--muted); margin-top: 4px; }
+
+    /* ── Footer ──────────────────────────────────────────────────────── */
+    .doc-footer {
+      background: var(--navy-dark);
+      color: #7a9abf;
+      font-size: 0.72rem;
+      padding: 10px 36px;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px;
+    }
+    .doc-footer a { color: var(--gold-lt); text-decoration: none; }
+
+    /* ── Page divider ─────────────────────────────────────────────────── */
+    .page-divider {
+      margin: 40px -36px 0;
+      border: none;
+      border-top: 8px solid var(--navy-dark);
+      position: relative;
+    }
+    .page-divider::after {
+      content: attr(data-label);
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: var(--gold); color: var(--navy-dark);
+      font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.78rem;
+      padding: 2px 18px; border-radius: 12px;
+      white-space: nowrap;
+    }
+
+    /* ── Prohibited / Permitted two-col ──────────────────────────────── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0; }
+    .col-permit { background: var(--green-lt); border: 1px solid #a8d9be; border-radius: 6px; padding: 12px 14px; }
+    .col-prohibit { background: var(--red-lt); border: 1px solid #f0b8b2; border-radius: 6px; padding: 12px 14px; }
+    .col-permit h4 { color: var(--green); font-family: 'Montserrat', sans-serif; font-size: 0.83rem; margin-bottom: 6px; }
+    .col-prohibit h4 { color: var(--red); font-family: 'Montserrat', sans-serif; font-size: 0.83rem; margin-bottom: 6px; }
+    .col-permit ul li::marker  { color: var(--green); }
+    .col-prohibit ul li::marker { color: var(--red); }
+
+    /* ── TOC ──────────────────────────────────────────────────────────── */
+    .toc { background: var(--section-bg); border: 1px solid var(--border); border-radius: 6px; padding: 16px 20px; margin: 16px 0; }
+    .toc h3 { font-family: 'Montserrat', sans-serif; color: var(--navy); font-size: 0.9rem; margin-bottom: 8px; }
+    .toc ol { margin: 0; padding-left: 20px; }
+    .toc li { margin-bottom: 3px; font-size: 0.82rem; }
+    .toc a { color: var(--navy); text-decoration: none; }
+    .toc a:hover { color: var(--gold); text-decoration: underline; }
+
+    p { margin-bottom: 8px; }
+    small { color: var(--muted); font-size: 0.78rem; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     DOCUMENT WRAPPER
+════════════════════════════════════════════════════════════════════ -->
+<div class="doc-wrapper">
+
+  <!-- HEADER -->
+  <div class="doc-header">
+    <div class="logo-shield">🏦</div>
+    <div class="header-title">
+      <h1>Valley Credit Union</h1>
+      <p>Information Technology Policy &amp; Acceptable Use Policy — Nova Scotia</p>
+    </div>
+    <div class="header-meta">
+      <strong>POLICY DOC-IT-001</strong><br>
+      Effective: April 22, 2026<br>
+      Review: April 2027<br>
+      Version: 1.0 FINAL
+    </div>
+  </div>
+  <div class="gold-rule"></div>
+
+  <!-- INFO BAR -->
+  <div class="info-bar">
+    <span><strong>Owner:</strong> IT &amp; Compliance Department</span>
+    <span><strong>Authority:</strong> Board of Directors</span>
+    <span><strong>Applies To:</strong> All Staff, Contractors &amp; Volunteers</span>
+    <span><strong>Jurisdiction:</strong> Nova Scotia, Canada</span>
+    <span><strong>Classification:</strong> Internal Use Only</span>
+  </div>
+
+  <!-- BODY -->
+  <div class="doc-body">
+
+    <!-- PURPOSE -->
+    <div class="section-title" id="s1">
+      <span class="policy-num">§ 1</span> Purpose &amp; Scope
+    </div>
+    <p>
+      This Information Technology (IT) Policy establishes the framework for the secure, responsible, and legally compliant use of all technology resources owned or managed by <strong>Valley Credit Union (Nova Scotia)</strong> (hereinafter "the Credit Union"). It applies to all employees, officers, directors, volunteers, contractors, third-party service providers, and any other individuals granted access to Credit Union systems, networks, or data.
+    </p>
+    <p>
+      Valley Credit Union is federally and provincially regulated and is subject to obligations under the <em>Credit Union Act (NS)</em>, <em>Personal Information Protection and Electronic Documents Act (PIPEDA)</em>, <em>Anti-Spam Legislation (CASL)</em>, <em>Financial Transactions and Reports Analysis Centre of Canada (FINTRAC)</em> guidelines, and applicable <em>Financial Consumer Agency of Canada (FCAC)</em> directives.
+    </p>
+
+    <!-- TOC -->
+    <div class="toc">
+      <h3>📋 Table of Contents</h3>
+      <ol>
+        <li><a href="#s1">Purpose &amp; Scope</a></li>
+        <li><a href="#s2">Roles &amp; Responsibilities</a></li>
+        <li><a href="#s3">Information Classification &amp; Handling</a></li>
+        <li><a href="#s4">Access Control &amp; Identity Management</a></li>
+        <li><a href="#s5">Password &amp; Authentication Policy</a></li>
+        <li><a href="#s6">Network &amp; Perimeter Security</a></li>
+        <li><a href="#s7">Endpoint &amp; Device Security</a></li>
+        <li><a href="#s8">Email &amp; Messaging Security</a></li>
+        <li><a href="#s9">Data Protection &amp; Privacy</a></li>
+        <li><a href="#s10">Banking-Specific Security Controls</a></li>
+        <li><a href="#s11">Backup &amp; Business Continuity</a></li>
+        <li><a href="#s12">Incident Response</a></li>
+        <li><a href="#s13">Third-Party &amp; Vendor Management</a></li>
+        <li><a href="#s14">Physical Security</a></li>
+        <li><a href="#s15">Audit, Monitoring &amp; Compliance</a></li>
+        <li><a href="#s16">Training &amp; Awareness</a></li>
+        <li><a href="#s17">Policy Violations &amp; Disciplinary Action</a></li>
+        <li><a href="#s18">Legal / Fair Use Policy <em>(Page 2)</em></a></li>
+      </ol>
+    </div>
+
+    <!-- § 2 ROLES -->
+    <div class="section-title" id="s2"><span class="policy-num">§ 2</span> Roles &amp; Responsibilities</div>
+    <div class="policy-grid">
+      <div class="policy-card">
+        <h4>👔 Board of Directors</h4>
+        <ul>
+          <li>Approve and annually review IT Policy</li>
+          <li>Ensure adequate IT security budget</li>
+          <li>Oversee cyber-risk at governance level</li>
+        </ul>
+      </div>
+      <div class="policy-card gold-top">
+        <h4>🛡️ Chief Information Security Officer (CISO)</h4>
+        <ul>
+          <li>Develop, maintain, and enforce this policy</li>
+          <li>Lead incident response and breach notification</li>
+          <li>Report cyber risks to Board quarterly</li>
+        </ul>
+      </div>
+      <div class="policy-card">
+        <h4>💻 IT Department</h4>
+        <ul>
+          <li>Implement technical controls</li>
+          <li>Manage systems, patches, and monitoring</li>
+          <li>Maintain network and endpoint security</li>
+        </ul>
+      </div>
+      <div class="policy-card">
+        <h4>⚖️ Compliance &amp; Risk Officer</h4>
+        <ul>
+          <li>Ensure regulatory alignment (PIPEDA, FINTRAC)</li>
+          <li>Conduct annual IT risk assessments</li>
+          <li>Manage third-party compliance reviews</li>
+        </ul>
+      </div>
+      <div class="policy-card">
+        <h4>👤 All Users</h4>
+        <ul>
+          <li>Comply with all policies herein</li>
+          <li>Complete annual security training</li>
+          <li>Report incidents immediately</li>
+        </ul>
+      </div>
+      <div class="policy-card amber-top">
+        <h4>🏢 Branch Managers</h4>
+        <ul>
+          <li>Enforce policy within branch</li>
+          <li>Ensure access is revoked upon staff departure</li>
+          <li>Conduct periodic workstation reviews</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- § 3 INFORMATION CLASSIFICATION -->
+    <div class="section-title" id="s3"><span class="policy-num">§ 3</span> Information Classification &amp; Handling</div>
+    <table>
+      <thead>
+        <tr><th>Classification</th><th>Description</th><th>Examples</th><th>Handling Requirements</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge badge-red">RESTRICTED</span></td>
+          <td>Highest sensitivity — disclosure could cause severe harm</td>
+          <td>Member account data, PINs, AML/FINTRAC reports, encryption keys</td>
+          <td>Encrypt at rest &amp; in transit; strict need-to-know; no USB export; audit log all access</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-amber">CONFIDENTIAL</span></td>
+          <td>Internal sensitive information</td>
+          <td>Employee files, internal financials, audit reports, IT system configs</td>
+          <td>Encrypt in transit; limit sharing; password-protect files</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-navy">INTERNAL</span></td>
+          <td>For Credit Union use only</td>
+          <td>Policies, procedures, meeting minutes, internal memos</td>
+          <td>Not to be shared externally without authorization</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-green">PUBLIC</span></td>
+          <td>Approved for public release</td>
+          <td>Marketing materials, website content, annual summaries</td>
+          <td>Standard handling; no special restrictions</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>All member financial data is classified <strong>RESTRICTED</strong> by default. Reclassification requires written approval from the CISO.</p>
+
+    <!-- § 4 ACCESS CONTROL -->
+    <div class="section-title" id="s4"><span class="policy-num">§ 4</span> Access Control &amp; Identity Management</div>
+    <div class="policy-grid">
+      <div class="policy-card">
+        <h4>🔑 Principle of Least Privilege</h4>
+        <ul>
+          <li>Users receive only the minimum access required for their role</li>
+          <li>Privilege escalation requires manager + IT approval</li>
+          <li>Administrative accounts separate from standard accounts</li>
+        </ul>
+      </div>
+      <div class="policy-card gold-top">
+        <h4>📋 Access Provisioning</h4>
+        <ul>
+          <li>Formal written request for all new accounts</li>
+          <li>Access granted within 24 hrs of HR confirmation</li>
+          <li>Role-based access control (RBAC) model enforced</li>
+        </ul>
+      </div>
+      <div class="policy-card red-top">
+        <h4>🚪 Access Termination</h4>
+        <ul>
+          <li>All access revoked within <strong>1 hour</strong> of termination</li>
+          <li>IT notified simultaneously with HR on departures</li>
+          <li>Shared credentials changed immediately</li>
+        </ul>
+      </div>
+      <div class="policy-card">
+        <h4>🔄 Access Reviews</h4>
+        <ul>
+          <li>Quarterly review of all privileged accounts</li>
+          <li>Annual review of all standard user accounts</li>
+          <li>Immediate review after any security incident</li>
+        </ul>
+      </div>
+    </div>
+    <div class="alert alert-amber">
+      <strong>⚠️ Shared Account Prohibition</strong>
+      Shared or generic user accounts (e.g., "teller1@valleycu.ns.ca") are strictly prohibited for individual login. All accounts must be uniquely attributable to a specific individual.
+    </div>
+
+    <!-- § 5 PASSWORDS -->
+    <div class="section-title" id="s5"><span class="policy-num">§ 5</span> Password &amp; Authentication Policy</div>
+    <div class="subsection-title">Password Requirements</div>
+    <table>
+      <thead>
+        <tr><th>Parameter</th><th>Standard User</th><th>Privileged/Admin</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Minimum Length</td><td>14 characters</td><td>20 characters</td></tr>
+        <tr><td>Complexity</td><td>Upper, lower, number, special character</td><td>Upper, lower, number, special character</td></tr>
+        <tr><td>Maximum Age</td><td>90 days</td><td>60 days</td></tr>
+        <tr><td>History</td><td>Last 12 passwords</td><td>Last 24 passwords</td></tr>
+        <tr><td>Lockout Threshold</td><td>5 failed attempts</td><td>3 failed attempts</td></tr>
+        <tr><td>Lockout Duration</td><td>15 minutes (auto-reset)</td><td>Manual IT unlock required</td></tr>
+        <tr><td>MFA Required</td><td>Yes (remote/VPN access)</td><td>Yes (all access)</td></tr>
+      </tbody>
+    </table>
+    <div class="subsection-title">Multi-Factor Authentication (MFA)</div>
+    <p>MFA is <strong>mandatory</strong> for: all remote access, core banking system access, email administration, cloud services, privileged accounts, and any access to member financial data. Approved MFA methods: hardware token (preferred), authenticator app (TOTP), or SMS OTP (last resort only).</p>
+    <div class="alert alert-amber">
+      <strong>⚠️ Password Manager</strong>
+      Users are encouraged to use Credit Union-approved password managers (e.g., Bitwarden Enterprise, LastPass Teams). Writing passwords on paper or storing in plain-text files is prohibited.
+    </div>
+
+    <!-- § 6 NETWORK -->
+    <div class="section-title" id="s6"><span class="policy-num">§ 6</span> Network &amp; Perimeter Security</div>
+    <div class="policy-grid">
+      <div class="policy-card">
+        <h4>🔥 Firewall &amp; IDS/IPS</h4>
+        <ul>
+          <li>Next-generation firewall (NGFW) on all perimeters</li>
+          <li>Intrusion detection &amp; prevention systems (IDS/IPS)</li>
+          <li>Default-deny inbound; allowlist outbound</li>
+          <li>Firewall rules reviewed quarterly</li>
+        </ul>
+      </div>
+      <div class="policy-card gold-top">
+        <h4>🌐 Network Segmentation</h4>
+        <ul>
+          <li>Core banking on isolated VLAN</li>
+          <li>Guest Wi-Fi isolated from corporate network</li>
+          <li>ATM network on separate segment</li>
+          <li>Teller stations on dedicated subnet</li>
+        </ul>
+      </div>
+      <div class="policy-card">
+        <h4>🔒 VPN &amp; Remote Access</h4>
+        <ul>
+          <li>Approved VPN required for all remote access</li>
+          <li>Split tunnelling disabled</li>
+          <li>VPN sessions timeout after 30 minutes idle</li>
+          <li>Personal devices require Compliance approval</li>
+        </ul>
+      </div>
+      <div class="policy-card amber-top">
+        <h4>📡 Wireless Security</h4>
+        <ul>
+          <li>WPA3-Enterprise on corporate Wi-Fi</li>
+          <li>SSIDs do not reveal organizational name</li>
+          <li>Guest SSID on separate network with content filtering</li>
+          <li>Rouge AP scanning enabled</li>
+        </ul>
+      </div>
+      <div class="policy-card">
+        <h4>📊 DNS &amp; Web Filtering</h4>
+        <ul>
+          <li>DNS filtering (e.g., Cisco Umbrella) enforced</li>
+          <li>Category-based web filtering for all users</li>
+          <li>Malicious domains blocked automatically</li>
+          <li>Override requires manager + IT ticket</li>
+        </ul>
+      </div>
+      <div class="policy-card red-top">
+        <h4>🚫 Prohibited Network Actions</h4>
+        <ul>
+          <li>No personal hotspots/tethering on corporate devices</li>
+          <li>No network scanning tools without IT authorization</li>
+          <li>No installation of personal network hardware</li>
+          <li>No use of TOR or anonymizing proxies</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- § 7 ENDPOINT -->
+    <div class="section-title" id="s7"><span class="policy-num">§ 7</span> Endpoint &amp; Device Security</div>
+    <div class="subsection-title">Managed Devices</div>
+    <ul>
+      <li>All Credit Union devices enrolled in Mobile Device Management (MDM) / Endpoint Detection &amp; Response (EDR) platform</li>
+      <li>Full-disk encryption (BitLocker/FileVault) mandatory on all laptops and portable devices</li>
+      <li>Antivirus/anti-malware with real-time protection and daily signature updates</li>
+      <li>Operating system and application patches applied within <strong>72 hours</strong> for critical; <strong>14 days</strong> for high; <strong>30 days</strong> for medium</li>
+      <li>USB and removable media ports disabled by default; exceptions require CISO approval</li>
+      <li>Screen lock activates after <strong>5 minutes</strong> idle; password required to unlock</li>
+      <li>Automatic screen lock must not be disabled by users</li>
+    </ul>
+    <div class="subsection-title">Bring Your Own Device (BYOD)</div>
+    <div class="alert alert-amber">
+      <strong>⚠️ Limited BYOD — Conditional</strong>
+      Personal devices may only access Credit Union email and calendar via approved containerized applications (e.g., Microsoft Intune MAM). Personal devices must not access core banking systems, member data, or internal file shares. Credit Union data on personal devices is subject to remote wipe upon termination or loss.
+    </div>
+
+    <!-- § 8 EMAIL -->
+    <div class="section-title" id="s8"><span class="policy-num">§ 8</span> Email &amp; Messaging Security</div>
+    <div class="policy-grid">
+      <div class="policy-card">
+        <h4>📧 Email Security Controls</h4>
+        <ul>
+          <li>SPF, DKIM, and DMARC configured and enforced</li>
+          <li>Advanced threat protection (ATP) scanning all inbound mail</li>
+          <li>Sandboxing of attachments before delivery</li>
+          <li>External email tagged with [EXTERNAL] banner</li>
+        </ul>
+      </div>
+      <div class="policy-card red-top">
+        <h4>🎣 Anti-Phishing</h4>
+        <ul>
+          <li>Phishing simulation campaigns quarterly</li>
+          <li>Report Phishing button in email client</li>
+          <li>Zero-click preview of links before opening</li>
+          <li>Executive impersonation protection enabled</li>
+        </ul>
+      </div>
+      <div class="policy-card amber-top">
+        <h4>📤 Data Loss Prevention</h4>
+        <ul>
+          <li>DLP rules block unencrypted member data via email</li>
+          <li>Outbound emails with SINs/account numbers flagged</li>
+          <li>Bulk mail to personal domains requires manager approval</li>
+          <li>Email auto-archive for regulatory compliance (7 years)</li>
+        </ul>
+      </div>
+    </div>
+    <p>Credit Union email accounts must not be used for personal or commercial activities unrelated to employment. Forwarding Credit Union email to personal accounts is prohibited.</p>
+
+    <!-- § 9 DATA PROTECTION -->
+    <div class="section-title" id="s9"><span class="policy-num">§ 9</span> Data Protection &amp; Privacy</div>
+    <p>Valley Credit Union collects, uses, and discloses personal information in accordance with <strong>PIPEDA</strong> and the <em>Nova Scotia Personal Information International Disclosure Protection Act (PIIDPA)</em>.</p>
+    <div class="policy-grid">
+      <div class="policy-card">
+        <h4>🔒 Encryption Standards</h4>
+        <ul>
+          <li>AES-256 for data at rest</li>
+          <li>TLS 1.2 minimum (TLS 1.3 preferred) for data in transit</li>
+          <li>No use of deprecated protocols (SSL, TLS 1.0/1.1, RC4, DES)</li>
+          <li>Certificate management via PKI; auto-renewal enforced</li>
+        </ul>
+      </div>
+      <div class="policy-card gold-top">
+        <h4>🗑️ Data Retention &amp; Disposal</h4>
+        <ul>
+          <li>Member records retained per regulatory minimums (7 years)</li>
+          <li>Secure wiping (DoD 5220.22-M or NIST 800-88) before device disposal</li>
+          <li>Physical media shredded via certified destruction vendor</li>
+          <li>Retention schedule reviewed annually by Compliance</li>
+        </ul>
+      </div>
+      <div class="policy-card">
+        <h4>☁️ Cloud Services</h4>
+        <ul>
+          <li>Only IT-approved cloud services permitted (SaaS allowlist)</li>
+          <li>Member data must remain in Canada unless explicit consent given</li>
+          <li>Shadow IT cloud usage strictly prohibited</li>
+          <li>Cloud vendor SOC 2 Type II reports required annually</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- § 10 BANKING-SPECIFIC -->
+    <div class="section-title" id="s10"><span class="policy-num">§ 10</span> Banking-Specific Security Controls</div>
+    <div class="subsection-title">Core Banking System (CBS) Controls</div>
+    <div class="policy-grid">
+      <div class="policy-card red-top">
+        <h4>🏦 Teller &amp; Transaction Security</h4>
+        <ul>
+          <li>Dual-control required for transactions over $10,000</li>
+          <li>No cash transaction overrides without supervisor approval</li>
+          <li>CBS session auto-logs out after 3 minutes idle</li>
+          <li>All CBS transactions logged and tamper-evident</li>
+        </ul>
+      </div>
+      <div class="policy-card gold-top">
+        <h4>💳 Payment Card (PCI-DSS)</h4>
+        <ul>
+          <li>Full PCI-DSS compliance maintained at all times</li>
+          <li>Cardholder data never stored post-authorization</li>
+          <li>Card data transmission via P2PE-certified terminals only</li>
+          <li>Annual QSA assessment and quarterly vulnerability scans</li>
+        </ul>
+      </div>
+      <div class="policy-card">
+        <h4>🏧 ATM Security</h4>
+        <ul>
+          <li>ATMs on isolated network segment</li>
+          <li>Anti-skimming devices inspected weekly</li>
+          <li>ATM software patched via secure out-of-band channel</li>
+          <li>Physical ATM access logged and monitored by camera</li>
+        </ul>
+      </div>
+      <div class="policy-card amber-top">
+        <h4>💰 AML / FINTRAC Controls</h4>
+        <ul>
+          <li>Automated suspicious transaction detection enabled</li>
+          <li>Large Cash Transaction Reports filed within 15 days</li>
+          <li>Suspicious Transaction Reports filed promptly per FINTRAC</li>
+          <li>AML system logs retained for 5 years minimum</li>
+        </ul>
+      </div>
+      <div class="policy-card">
+        <h4>🔐 Online &amp; Mobile Banking</h4>
+        <ul>
+          <li>MFA enforced for all online banking sessions</li>
+          <li>Session tokens expire after 10 minutes idle</li>
+          <li>Fraud detection rules reviewed and tuned monthly</li>
+          <li>API endpoints authenticated and rate-limited</li>
+        </ul>
+      </div>
+      <div class="policy-card red-top">
+        <h4>📑 Segregation of Duties</h4>
+        <ul>
+          <li>No single user can initiate and approve a transaction</li>
+          <li>IT staff cannot approve their own change requests</li>
+          <li>Finance access strictly separated from IT admin</li>
+          <li>Annual SoD conflict review by Internal Audit</li>
+        </ul>
+      </div>
+    </div>
+    <div class="alert">
+      <strong>🚨 CRITICAL — Wire Transfer Security</strong>
+      All outgoing wire transfers over $5,000 require verbal confirmation via a pre-registered callback number. Email-only wire transfer instructions will never be acted upon. Employees must verify unexpected wire requests directly with the requestor using a known, verified phone number — never reply to the requesting email.
+    </div>
+
+    <!-- § 11 BACKUP & BCP -->
+    <div class="section-title green-bar" id="s11"><span class="policy-num">§ 11</span> Backup &amp; Business Continuity</div>
+    <div class="policy-grid">
+      <div class="policy-card green-top">
+        <h4>💾 Backup Standards</h4>
+        <ul>
+          <li>Daily incremental backups; weekly full backups</li>
+          <li>Offsite/cloud backup replicated in separate geographic region</li>
+          <li>Backup encryption with keys held separately from data</li>
+          <li>Backup restoration tested monthly (sampling) and quarterly (full)</li>
+        </ul>
+      </div>
+      <div class="policy-card green-top">
+        <h4>📋 Business Continuity Plan (BCP)</h4>
+        <ul>
+          <li>BCP reviewed and tested annually (tabletop exercise)</li>
+          <li>Recovery Time Objective (RTO): Core banking — <strong>4 hours</strong></li>
+          <li>Recovery Point Objective (RPO): <strong>1 hour</strong> for member data</li>
+          <li>Alternate processing site identified and contractually reserved</li>
+        </ul>
+      </div>
+      <div class="policy-card green-top">
+        <h4>☁️ Disaster Recovery</h4>
+        <ul>
+          <li>Disaster Recovery Plan (DRP) separate from BCP</li>
+          <li>Annual DRP failover test with documented results</li>
+          <li>Critical vendors included in DR communications plan</li>
+          <li>IT staff on-call rotation for DR activation</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- § 12 INCIDENT RESPONSE -->
+    <div class="section-title red-bar" id="s12"><span class="policy-num">§ 12</span> Incident Response</div>
+    <table>
+      <thead>
+        <tr><th>Phase</th><th>Actions</th><th>Responsible</th><th>Timeframe</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. Identification</strong></td>
+          <td>Detect anomaly via SIEM/IDS/user report; classify severity (P1–P4)</td>
+          <td>IT / All Users</td>
+          <td>Immediate</td>
+        </tr>
+        <tr>
+          <td><strong>2. Containment</strong></td>
+          <td>Isolate affected systems; revoke compromised credentials; block attack vector</td>
+          <td>IT / CISO</td>
+          <td>Within 1 hour (P1/P2)</td>
+        </tr>
+        <tr>
+          <td><strong>3. Notification</strong></td>
+          <td>Notify CISO, Executive, Legal. Assess breach notification obligations (PIPEDA, OSFI)</td>
+          <td>CISO / Compliance</td>
+          <td>Within 2 hours (P1)</td>
+        </tr>
+        <tr>
+          <td><strong>4. Eradication</strong></td>
+          <td>Remove malware/threat actor; patch vulnerability; audit logs preserved</td>
+          <td>IT</td>
+          <td>As soon as safe</td>
+        </tr>
+        <tr>
+          <td><strong>5. Recovery</strong></td>
+          <td>Restore from clean backups; validate system integrity; monitor closely</td>
+          <td>IT</td>
+          <td>Per RTO targets</td>
+        </tr>
+        <tr>
+          <td><strong>6. Post-Incident Review</strong></td>
+          <td>Root cause analysis; lessons learned document; policy updates if needed</td>
+          <td>CISO / IT / Compliance</td>
+          <td>Within 5 business days</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="alert">
+      <strong>🚨 Breach Notification Obligations</strong>
+      In the event of a privacy breach involving member personal information, the Office of the Privacy Commissioner of Canada must be notified as soon as feasible under PIPEDA. Affected members must be notified if the breach creates a real risk of significant harm. OSFI/FCAC notification may be required for material cyber incidents.
+    </div>
+
+    <!-- § 13 THIRD PARTY -->
+    <div class="section-title" id="s13"><span class="policy-num">§ 13</span> Third-Party &amp; Vendor Management</div>
+    <ul>
+      <li>All vendors with access to Credit Union systems or data must sign a Data Processing Agreement (DPA) before engagement</li>
+      <li>Vendor security assessments (questionnaire + evidence review) required prior to onboarding</li>
+      <li>Third-party access via dedicated, monitored accounts — never shared credentials</li>
+      <li>Remote vendor access sessions recorded; just-in-time access provisioning preferred</li>
+      <li>Critical vendors (core banking, payment processing) subject to annual on-site or virtual audit</li>
+      <li>Vendor access terminated immediately upon contract expiry or breach of agreement</li>
+      <li>Supply chain risk reviewed as part of annual IT risk assessment</li>
+    </ul>
+
+    <!-- § 14 PHYSICAL SECURITY -->
+    <div class="section-title" id="s14"><span class="policy-num">§ 14</span> Physical Security</div>
+    <div class="policy-grid">
+      <div class="policy-card">
+        <h4>🚪 Server Room / Data Centre</h4>
+        <ul>
+          <li>Card key + PIN access; biometric preferred</li>
+          <li>Access log reviewed monthly by IT Manager</li>
+          <li>No unescorted visitor access</li>
+          <li>CCTV recording retained 90 days</li>
+        </ul>
+      </div>
+      <div class="policy-card gold-top">
+        <h4>🖥️ Workstation Security</h4>
+        <ul>
+          <li>Clean desk policy enforced — no member data left visible</li>
+          <li>Screens positioned to prevent shoulder-surfing</li>
+          <li>Privacy screens on teller terminals</li>
+          <li>Locks on drawers containing sensitive documents</li>
+        </ul>
+      </div>
+      <div class="policy-card amber-top">
+        <h4>📦 Asset Management</h4>
+        <ul>
+          <li>All IT assets tagged and recorded in CMDB</li>
+          <li>Annual physical asset inventory</li>
+          <li>Lost/stolen devices reported to IT within 1 hour of discovery</li>
+          <li>Remote wipe initiated within 2 hours of loss report</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- § 15 AUDIT & MONITORING -->
+    <div class="section-title" id="s15"><span class="policy-num">§ 15</span> Audit, Monitoring &amp; Compliance</div>
+    <ul>
+      <li>Security Information and Event Management (SIEM) system in place; logs monitored 24/7</li>
+      <li>All privileged account activity logged and reviewed weekly</li>
+      <li>Core banking transaction logs retained for <strong>7 years</strong></li>
+      <li>Network traffic logs retained for <strong>12 months</strong></li>
+      <li>User activity on Credit Union systems is subject to monitoring; users have no expectation of privacy on Credit Union-owned systems</li>
+      <li>Annual internal IT audit; biennial external penetration test by qualified third party</li>
+      <li>Vulnerability scans conducted monthly; critical findings remediated within 72 hours</li>
+      <li>Compliance with this policy reported to Board of Directors annually</li>
+    </ul>
+    <div class="alert alert-amber">
+      <strong>⚠️ Monitoring Notice</strong>
+      By using Credit Union IT systems, users consent to monitoring of their activity for security and compliance purposes. This monitoring may include email content, web browsing, application usage, and keystrokes on managed devices.
+    </div>
+
+    <!-- § 16 TRAINING -->
+    <div class="section-title green-bar" id="s16"><span class="policy-num">§ 16</span> Training &amp; Awareness</div>
+    <ul>
+      <li>Mandatory security awareness training for all staff upon hire and annually thereafter</li>
+      <li>Phishing simulation campaigns — minimum quarterly; results tracked by department</li>
+      <li>Role-specific training for IT staff, tellers, and management (PCI-DSS, AML, PIPEDA)</li>
+      <li>Training completion records retained for audit purposes</li>
+      <li>Staff who fail phishing simulations receive immediate remedial training</li>
+      <li>Security updates communicated via monthly IT bulletin to all staff</li>
+    </ul>
+
+    <!-- § 17 VIOLATIONS -->
+    <div class="section-title red-bar" id="s17"><span class="policy-num">§ 17</span> Policy Violations &amp; Disciplinary Action</div>
+    <table>
+      <thead>
+        <tr><th>Severity</th><th>Examples</th><th>Consequence</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge badge-amber">MINOR</span></td>
+          <td>Forgetting to lock screen, unintentional policy slip</td>
+          <td>Verbal warning, retraining</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-amber">MODERATE</span></td>
+          <td>Sharing credentials, installing unauthorized software, repeated minor violations</td>
+          <td>Written warning, IT access review, mandatory training</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-red">SERIOUS</span></td>
+          <td>Accessing member data without authorization, intentional policy bypass</td>
+          <td>Suspension pending investigation, possible termination</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-red">CRITICAL</span></td>
+          <td>Data theft, fraud, sabotage, knowingly facilitating a cyberattack</td>
+          <td>Immediate termination, criminal referral, civil action</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Nothing in this policy limits Valley Credit Union's right to pursue civil or criminal remedies for policy violations involving illegal activity.</p>
+
+    <!-- SIGNATURES -->
+    <div class="section-title"><span class="policy-num">§</span> Authorization &amp; Sign-Off</div>
+    <div class="sig-grid">
+      <div class="sig-box">
+        <strong>Chief Executive Officer</strong>
+        <p>Name: ____________________________</p>
+        <p>Signature: ________________________</p>
+        <p>Date: ____________________________</p>
+      </div>
+      <div class="sig-box">
+        <strong>CISO / IT Manager</strong>
+        <p>Name: ____________________________</p>
+        <p>Signature: ________________________</p>
+        <p>Date: ____________________________</p>
+      </div>
+      <div class="sig-box">
+        <strong>Compliance &amp; Risk Officer</strong>
+        <p>Name: ____________________________</p>
+        <p>Signature: ________________________</p>
+        <p>Date: ____________________________</p>
+      </div>
+    </div>
+
+    <!-- ═══════ PAGE 2 DIVIDER ═══════ -->
+    <hr class="page-divider" data-label="PAGE 2 — LEGAL &amp; FAIR USE POLICY">
+    <div style="height:48px;"></div>
+
+    <!-- PAGE 2 HEADER -->
+    <div style="text-align:center; margin-bottom: 20px;" id="s18">
+      <div style="display:inline-block; background:var(--navy); color:#fff; padding:10px 32px; border-radius:6px; margin-bottom:10px;">
+        <span style="font-family:'Montserrat',sans-serif; font-size:1.2rem; font-weight:900; letter-spacing:1px;">
+          VALLEY CREDIT UNION — NOVA SCOTIA
+        </span>
+      </div>
+      <div style="font-family:'Montserrat',sans-serif; font-size:1.5rem; font-weight:900; color:var(--navy); margin-bottom:4px;">
+        Legal &amp; Fair Use Policy
+      </div>
+      <div style="font-size:0.82rem; color:var(--muted);">
+        Internet, Computer &amp; Technology Acceptable Use — Policy DOC-IT-001-AUP | Version 1.0
+      </div>
+      <div style="font-size:0.78rem; color:var(--muted); margin-top:4px;">
+        <em>This policy forms part of the Valley Credit Union IT Policy and must be read in conjunction with it.</em>
+      </div>
+    </div>
+
+    <div class="alert alert-green">
+      <strong>✅ Purpose</strong>
+      This Acceptable Use Policy (AUP) defines permitted and prohibited uses of Valley Credit Union's computers, internet, email, telephone, mobile devices, cloud services, and all other technology resources. It applies to all employees, contractors, volunteers, students, and any other users of Credit Union technology, on or off Credit Union premises.
+    </div>
+
+    <!-- GENERAL PRINCIPLES -->
+    <div class="section-title green-bar"><span class="policy-num">AUP 1</span> General Principles</div>
+    <p>Credit Union technology resources are provided for <strong>legitimate business purposes</strong>. Users are expected to act with integrity, professionalism, and respect. Incidental personal use of computers and internet access is permitted within reasonable limits, provided it does not:</p>
+    <ul>
+      <li>Interfere with work duties or productivity</li>
+      <li>Consume excessive bandwidth or storage</li>
+      <li>Violate any law, regulation, or Credit Union policy</li>
+      <li>Create any legal liability for the Credit Union</li>
+      <li>Expose Credit Union systems or data to risk</li>
+    </ul>
+    <p><strong>Users have no expectation of privacy on Credit Union systems.</strong> All activity may be logged, monitored, and reviewed at any time without prior notice.</p>
+
+    <!-- PERMITTED USE -->
+    <div class="section-title green-bar"><span class="policy-num">AUP 2</span> Permitted Uses</div>
+    <div class="two-col">
+      <div class="col-permit">
+        <h4>✅ Permitted — Business Use</h4>
+        <ul>
+          <li>Work-related research and information gathering</li>
+          <li>Communication with members, vendors, and partners</li>
+          <li>Online banking and financial system access</li>
+          <li>Use of Credit Union-approved productivity tools (Microsoft 365, etc.)</li>
+          <li>Attending approved webinars and online training</li>
+          <li>Accessing regulatory and compliance resources</li>
+          <li>Professional development related to role</li>
+          <li>Videoconferencing (Teams, Zoom) for business meetings</li>
+        </ul>
+      </div>
+      <div class="col-permit">
+        <h4>✅ Permitted — Limited Personal Use</h4>
+        <ul>
+          <li>Brief personal internet browsing during breaks</li>
+          <li>Personal email access (web-based) during non-work hours</li>
+          <li>Online banking for personal accounts (brief, during breaks)</li>
+          <li>News and weather websites</li>
+          <li>Checking approved social media briefly during breaks (personal, non-CU accounts)</li>
+        </ul>
+        <small>Personal use must never compromise performance, security, or professional standards.</small>
+      </div>
+    </div>
+
+    <!-- PROHIBITED USES -->
+    <div class="section-title red-bar"><span class="policy-num">AUP 3</span> Prohibited Uses — Comprehensive List</div>
+    <p>The following are <strong>strictly prohibited</strong> at all times on Credit Union systems, networks, and devices — regardless of whether the activity occurs during or outside working hours:</p>
+
+    <div class="subsection-title">🔞 Pornography &amp; Adult Content</div>
+    <div class="col-prohibit" style="margin-bottom:12px;">
+      <h4>❌ Absolutely Prohibited</h4>
+      <ul>
+        <li>Accessing, downloading, storing, distributing, or viewing any pornographic, sexually explicit, or adult content</li>
+        <li>Accessing any website, app, or service that hosts or promotes sexually explicit material</li>
+        <li>Any access to child sexual abuse material (CSAM) — this is a criminal offence and will result in immediate referral to law enforcement</li>
+        <li>Sharing, forwarding, or distributing adult or explicit images/videos — regardless of perceived consent</li>
+        <li>Online sex work activity, solicitation, or access to escort/dating sites of a sexual nature</li>
+      </ul>
+    </div>
+
+    <div class="subsection-title">🗑️ Garbage / Junk / Time-Wasting Sites</div>
+    <div class="col-prohibit" style="margin-bottom:12px;">
+      <h4>❌ Prohibited</h4>
+      <ul>
+        <li>Excessive use of entertainment streaming platforms (Netflix, YouTube, Twitch, TikTok, etc.) during work hours for non-business purposes</li>
+        <li>Online gaming, gambling websites, or casino platforms</li>
+        <li>Fantasy sports or sports betting platforms</li>
+        <li>Clickbait, tabloid, or time-wasting content aggregators</li>
+        <li>Accessing sites known to host malware, adware, or deceptive content</li>
+        <li>Subscription to junk newsletters or marketing content using Credit Union email</li>
+      </ul>
+    </div>
+
+    <div class="subsection-title">⚠️ Illegal &amp; Harmful Activities</div>
+    <div class="col-prohibit" style="margin-bottom:12px;">
+      <h4>❌ Prohibited — May Constitute Criminal Offence</h4>
+      <ul>
+        <li>Accessing the dark web, TOR network, or any anonymization services</li>
+        <li>Downloading, sharing, or storing pirated software, movies, music, or any copyrighted material without authorization</li>
+        <li>Participating in or facilitating hacking, cracking, network scanning, or denial-of-service attacks</li>
+        <li>Accessing credit card or financial fraud forums, carding sites, or identity theft resources</li>
+        <li>Any activity related to drug procurement, arms trafficking, or human exploitation</li>
+        <li>Distribution of malware, ransomware, spyware, or any malicious code</li>
+        <li>Unauthorized access to third-party computers, networks, or systems</li>
+        <li>Cryptocurrency mining on Credit Union equipment or networks</li>
+      </ul>
+    </div>
+
+    <div class="subsection-title">🏦 Financial Crime &amp; Fraud</div>
+    <div class="col-prohibit" style="margin-bottom:12px;">
+      <h4>❌ Prohibited — Regulatory &amp; Criminal Breach</h4>
+      <ul>
+        <li>Unauthorized access to member financial data or accounts</li>
+        <li>Manipulation, falsification, or destruction of financial records or audit trails</li>
+        <li>Using Credit Union systems to facilitate money laundering, structuring, or layering</li>
+        <li>Sharing member PINs, account numbers, or authentication credentials with unauthorized persons</li>
+        <li>Insider trading or sharing non-public material information electronically</li>
+        <li>Bypassing transaction authorization controls or dual-control requirements</li>
+      </ul>
+    </div>
+
+    <div class="subsection-title">😡 Harassment, Hate &amp; Discrimination</div>
+    <div class="col-prohibit" style="margin-bottom:12px;">
+      <h4>❌ Prohibited</h4>
+      <ul>
+        <li>Accessing, creating, or distributing content that promotes hate based on race, ethnicity, religion, gender, sexual orientation, disability, or any protected ground under the <em>Nova Scotia Human Rights Act</em></li>
+        <li>Cyberbullying, harassment, or intimidation of colleagues, members, or any individual via Credit Union systems</li>
+        <li>Creating or sharing threatening, abusive, or offensive content</li>
+        <li>Accessing extremist, radicalization, or terrorist propaganda websites</li>
+        <li>Sexual harassment via electronic communications (email, messaging, video)</li>
+      </ul>
+    </div>
+
+    <div class="subsection-title">🔐 Security-Undermining Activities</div>
+    <div class="col-prohibit" style="margin-bottom:12px;">
+      <h4>❌ Prohibited</h4>
+      <ul>
+        <li>Attempting to bypass, disable, or circumvent security controls (firewalls, filters, MFA, DLP)</li>
+        <li>Installing unauthorized software, apps, browser extensions, or plugins</li>
+        <li>Using personal USB drives, external hard drives, or removable media without IT approval</li>
+        <li>Connecting unauthorized network devices (personal routers, switches, hubs)</li>
+        <li>Conducting penetration testing or vulnerability scanning without explicit written CISO authorization</li>
+        <li>Sharing IT system passwords, VPN credentials, or MFA tokens with anyone</li>
+        <li>Leaving workstations unlocked and unattended</li>
+      </ul>
+    </div>
+
+    <div class="subsection-title">📣 Unauthorized Communications &amp; Social Media</div>
+    <div class="col-prohibit" style="margin-bottom:12px;">
+      <h4>❌ Prohibited</h4>
+      <ul>
+        <li>Representing or speaking on behalf of Valley Credit Union on social media without authorization from Marketing/Management</li>
+        <li>Posting confidential, member, or internal Credit Union information publicly</li>
+        <li>Sending spam, chain emails, or mass unsolicited messages</li>
+        <li>Using Credit Union email to sign up for personal social media, subscription services, or commercial accounts</li>
+        <li>Disparaging Valley Credit Union, its members, staff, or partners in any public online forum</li>
+        <li>Engaging in phishing, spoofing, or social engineering attacks</li>
+      </ul>
+    </div>
+
+    <div class="subsection-title">💼 Misuse of Resources &amp; Intellectual Property</div>
+    <div class="col-prohibit" style="margin-bottom:12px;">
+      <h4>❌ Prohibited</h4>
+      <ul>
+        <li>Running personal business operations on Credit Union systems or time</li>
+        <li>Using Credit Union equipment for freelance or secondary employment work</li>
+        <li>Circumventing software licensing agreements or using unlicensed software</li>
+        <li>Reproducing, copying, or distributing copyrighted documents, images, or software without license</li>
+        <li>Storing personal large media files (movies, music libraries, photo archives) on Credit Union servers or cloud</li>
+      </ul>
+    </div>
+
+    <!-- SOCIAL MEDIA -->
+    <div class="section-title amber-bar"><span class="policy-num">AUP 4</span> Social Media Policy</div>
+    <p>All Credit Union employees who use social media — personally or professionally — must adhere to the following:</p>
+    <ul>
+      <li>Never disclose confidential, proprietary, or member information on any social platform</li>
+      <li>Clearly state that personal opinions are your own and do not represent Valley Credit Union</li>
+      <li>Do not post photos, videos, or descriptions of Credit Union premises, systems, or operations without approval</li>
+      <li>Official Credit Union social media accounts are managed exclusively by authorized Marketing staff</li>
+      <li>Do not engage in online disputes involving the Credit Union — report concerns to Management</li>
+    </ul>
+
+    <!-- MONITORING NOTICE -->
+    <div class="section-title"><span class="policy-num">AUP 5</span> Monitoring &amp; Privacy Notice</div>
+    <div class="alert alert-amber">
+      <strong>⚠️ Monitoring Disclosure</strong>
+      Valley Credit Union reserves the right to monitor, log, review, and disclose any and all activity conducted on Credit Union IT systems, including but not limited to: internet browsing history, email content, file activity, application usage, keystrokes, and screen capture. This monitoring occurs to ensure security, regulatory compliance, and appropriate use. Users have <strong>no expectation of privacy</strong> while using Credit Union technology resources. Evidence gathered through monitoring may be used in disciplinary, civil, or criminal proceedings.
+    </div>
+
+    <!-- REPORTING -->
+    <div class="section-title green-bar"><span class="policy-num">AUP 6</span> Reporting Obligations</div>
+    <p>Users who discover or suspect a violation of this policy must immediately report it to:</p>
+    <div class="policy-grid">
+      <div class="policy-card green-top">
+        <h4>🖥️ IT Security Incidents</h4>
+        <ul>
+          <li><strong>IT Help Desk:</strong> ext. 100 / helpdesk@valleycu.ns.ca</li>
+          <li><strong>CISO (Urgent):</strong> ext. 101</li>
+          <li>Report phishing via the "Report Phishing" button in Outlook</li>
+        </ul>
+      </div>
+      <div class="policy-card green-top">
+        <h4>⚖️ Policy / HR Violations</h4>
+        <ul>
+          <li><strong>Human Resources:</strong> hr@valleycu.ns.ca</li>
+          <li><strong>Anonymous Hotline:</strong> 1-800-XXX-XXXX</li>
+          <li>Reports investigated confidentially; no retaliation tolerated</li>
+        </ul>
+      </div>
+      <div class="policy-card red-top">
+        <h4>🚨 Criminal Activity</h4>
+        <ul>
+          <li>Contact CISO and HR immediately</li>
+          <li>Preserve evidence — do not confront the individual</li>
+          <li>Law enforcement will be notified by management as appropriate</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CONSEQUENCES -->
+    <div class="section-title red-bar"><span class="policy-num">AUP 7</span> Consequences of Violation</div>
+    <p>Violations of this Acceptable Use Policy may result in:</p>
+    <ul>
+      <li>Immediate suspension of IT access pending investigation</li>
+      <li>Verbal warning, written warning, or formal reprimand</li>
+      <li>Mandatory remedial training</li>
+      <li>Demotion, suspension without pay, or termination of employment</li>
+      <li>Civil litigation for damages caused to the Credit Union</li>
+      <li>Referral to law enforcement and criminal prosecution where applicable</li>
+      <li>Reporting to professional regulatory bodies where applicable</li>
+    </ul>
+    <div class="alert">
+      <strong>🚨 Zero Tolerance Items</strong>
+      The following violations result in <strong>immediate termination and referral to law enforcement</strong> with no exception: accessing child sexual abuse material (CSAM); theft or fraudulent use of member financial data; intentional sabotage of Credit Union systems; knowingly facilitating a cyberattack or data breach.
+    </div>
+
+    <!-- ACKNOWLEDGEMENT -->
+    <div class="section-title"><span class="policy-num">AUP 8</span> Employee Acknowledgement</div>
+    <p>All users must sign this acknowledgement upon hire and upon each annual policy review. A signed copy is retained in the employee's HR file.</p>
+    <div style="background:var(--section-bg); border:1px solid var(--border); border-radius:6px; padding:18px 20px; margin:14px 0;">
+      <p style="margin-bottom:14px;">
+        <strong>I, the undersigned, acknowledge that I have read, understood, and agree to comply with the Valley Credit Union IT Policy and Legal &amp; Fair Use (Acceptable Use) Policy in their entirety. I understand that violations may result in disciplinary action up to and including termination of employment and/or criminal referral.</strong>
+      </p>
+      <div class="sig-grid">
+        <div class="sig-box">
+          <strong>Full Name (Print)</strong>
+          <p>_________________________________</p>
+        </div>
+        <div class="sig-box">
+          <strong>Signature</strong>
+          <p>_________________________________</p>
+        </div>
+        <div class="sig-box">
+          <strong>Date / Employee ID</strong>
+          <p>_________________________________</p>
+        </div>
+      </div>
+    </div>
+
+    <small>
+      <strong>Document:</strong> Valley Credit Union IT Policy &amp; Acceptable Use Policy | DOC-IT-001 v1.0 |
+      Effective: April 22, 2026 | Next Review: April 2027 |
+      Owner: IT &amp; Compliance Department | Classification: Internal Use Only |
+      Questions: ciso@valleycu.ns.ca
+    </small>
+
+  </div><!-- end .doc-body -->
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <span>Valley Credit Union — Nova Scotia | IT Policy DOC-IT-001 v1.0 | Effective April 22, 2026</span>
+    <span>Classification: <strong style="color:var(--gold-lt);">INTERNAL USE ONLY</strong></span>
+    <span>Owner: IT &amp; Compliance | Review: April 2027</span>
+  </div>
+
+</div><!-- end .doc-wrapper -->
+
+</body>
+</html>
