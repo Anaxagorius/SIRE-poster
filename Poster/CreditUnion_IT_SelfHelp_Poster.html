@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Credit Union — IT Self-Help &amp; Security Portal</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap');
+
+    /* ── Reset & base ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #003366;
+      --navy-dark: #001f45;
+      --gold:      #c8962b;
+      --gold-lt:   #f5e0a8;
+      --red-alert: #c0392b;
+      --red-lt:    #fdecea;
+      --green:     #1a7a4a;
+      --green-lt:  #e6f5ed;
+      --text:      #1a1a2e;
+      --muted:     #556;
+      --border:    #ccd4e0;
+      --bg:        #ffffff;
+    }
+
+    body {
+      font-family: 'Open Sans', Arial, sans-serif;
+      background: #dde3ee;
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    /* ── Print: A1 landscape ──────────────────────────────────────── */
+    @media print {
+      @page { size: A1 landscape; margin: 8mm; }
+      html, body { margin: 0; padding: 0; min-height: 0; background: #dde3ee !important;
+                   -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .poster { margin: 0 !important; box-shadow: none !important;
+                max-width: none !important; width: 100% !important; border-radius: 0 !important; }
+    }
+
+    /* ── Poster shell ─────────────────────────────────────────────── */
+    .poster {
+      max-width: 1540px;
+      margin: 24px auto;
+      background: var(--bg);
+      border: 2px solid #aabbcc;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 28px rgba(0,51,102,0.22);
+    }
+
+    /* ── Header band ──────────────────────────────────────────────── */
+    .poster-header {
+      background: var(--navy);
+      padding: 14px 36px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 24px;
+    }
+    .header-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-shield {
+      width: 64px;
+      height: 64px;
+      background: var(--gold);
+      border-radius: 50% 50% 48% 48% / 55% 55% 45% 45%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.35);
+    }
+    .logo-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--gold-lt);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 5px;
+      text-align: center;
+    }
+    .header-center {
+      text-align: center;
+    }
+    .poster-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.0rem;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+    .poster-title span { color: var(--gold); }
+    .poster-subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.0rem;
+      font-weight: 700;
+      color: var(--gold-lt);
+      letter-spacing: 0.04em;
+      margin-top: 4px;
+    }
+    .poster-tagline {
+      font-style: italic;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.72);
+      margin-top: 3px;
+    }
+    .header-contact-box {
+      background: rgba(255,255,255,0.10);
+      border: 1.5px solid rgba(255,255,255,0.30);
+      border-radius: 8px;
+      padding: 10px 18px;
+      text-align: center;
+      min-width: 180px;
+    }
+    .hcb-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-lt);
+      margin-bottom: 4px;
+    }
+    .hcb-number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: 0.04em;
+    }
+    .hcb-sub {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.7);
+      margin-top: 2px;
+    }
+
+    /* ── Alert banner ─────────────────────────────────────────────── */
+    .alert-banner {
+      background: var(--red-alert);
+      padding: 7px 36px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .alert-banner-icon { font-size: 1.1rem; }
+    .alert-banner-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.03em;
+    }
+    .alert-banner-text span { color: var(--gold-lt); }
+
+    /* ── 3-column body ────────────────────────────────────────────── */
+    .poster-body {
+      display: grid;
+      grid-template-columns: 26% 1fr 28%;
+      gap: 0;
+    }
+    .col {
+      padding: 20px 18px;
+      border-right: 2px solid var(--border);
+    }
+    .col:last-child { border-right: none; }
+    .col-left  { background: #f0f4fb; }
+    .col-mid   { background: #ffffff; padding: 20px 22px; }
+    .col-right { background: #fff8f0; }
+
+    /* ── Section heading ──────────────────────────────────────────── */
+    .sec-heading {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-align: center;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      padding-bottom: 5px;
+      border-bottom: 2px solid var(--navy);
+    }
+    .sec-heading.danger { color: var(--red-alert); border-bottom-color: var(--red-alert); }
+    .sec-heading.success { color: var(--green); border-bottom-color: var(--green); }
+    .sec-heading.gold { color: var(--gold); border-bottom-color: var(--gold); }
+
+    .sec-divider {
+      border: none;
+      border-top: 1.5px solid var(--border);
+      margin: 14px 0;
+    }
+
+    /* ── Content boxes ────────────────────────────────────────────── */
+    .content-box {
+      border-radius: 7px;
+      padding: 11px 13px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+    .box-navy   { background: #e8eef8; border: 1.5px solid #7a9acc; }
+    .box-green  { background: var(--green-lt); border: 1.5px solid #7ac4a0; }
+    .box-gold   { background: #fef8e7; border: 1.5px solid #d4a83a; }
+    .box-red    { background: var(--red-lt); border: 1.5px solid #e88070; }
+    .box-orange { background: #fff4e6; border: 1.5px solid #f4a555; }
+    .box-purple { background: #f3eeff; border: 1.5px solid #b09de0; }
+    .box-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--navy);
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .box-label.danger { color: var(--red-alert); }
+    .box-label.success { color: var(--green); }
+    .box-label.gold { color: #8a6010; }
+
+    /* ── Bullet lists ─────────────────────────────────────────────── */
+    .bullet-list {
+      list-style: none;
+      padding: 0;
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .bullet-list li {
+      margin-bottom: 4px;
+      padding-left: 1.4em;
+      position: relative;
+    }
+    .bullet-list li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--navy);
+    }
+    .bullet-list.danger li::before { color: var(--red-alert); }
+    .bullet-list.success li::before { color: var(--green); }
+
+    /* ── DO / DON'T table ─────────────────────────────────────────── */
+    .do-dont {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .do-cell, .dont-cell {
+      border-radius: 6px;
+      padding: 9px 11px;
+      font-size: 0.84rem;
+      line-height: 1.55;
+    }
+    .do-cell {
+      background: var(--green-lt);
+      border: 1.5px solid #7ac4a0;
+    }
+    .dont-cell {
+      background: var(--red-lt);
+      border: 1.5px solid #e88070;
+    }
+    .do-cell strong, .dont-cell strong {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .do-cell strong { color: var(--green); }
+    .dont-cell strong { color: var(--red-alert); }
+    .do-cell ul, .dont-cell ul {
+      list-style: none;
+      padding: 0;
+    }
+    .do-cell ul li, .dont-cell ul li {
+      padding-left: 1.2em;
+      position: relative;
+      margin-bottom: 2px;
+    }
+    .do-cell ul li::before   { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+    .dont-cell ul li::before { content: '✗'; position: absolute; left: 0; color: var(--red-alert); font-weight: 700; }
+
+    /* ── Step list (numbered) ─────────────────────────────────────── */
+    .step-list {
+      list-style: none;
+      padding: 0;
+      counter-reset: steps;
+    }
+    .step-list li {
+      counter-increment: steps;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 9px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+    .step-num.danger { background: var(--red-alert); }
+
+    /* ── Severity badge ───────────────────────────────────────────── */
+    .sev-badge {
+      display: inline-block;
+      border-radius: 4px;
+      padding: 2px 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      vertical-align: middle;
+      margin-left: 5px;
+    }
+    .sev-critical { background: #c0392b; color: #fff; }
+    .sev-high     { background: #e67e22; color: #fff; }
+    .sev-medium   { background: #f1c40f; color: #333; }
+    .sev-low      { background: #27ae60; color: #fff; }
+
+    /* ── Issue card grid ──────────────────────────────────────────── */
+    .issue-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .issue-card {
+      border-radius: 6px;
+      padding: 9px 10px;
+      font-size: 0.84rem;
+      line-height: 1.5;
+    }
+    .ic-navy   { background: #e8eef8; border: 1.5px solid #7a9acc; }
+    .ic-gold   { background: #fef8e7; border: 1.5px solid #d4a83a; }
+    .ic-green  { background: var(--green-lt); border: 1.5px solid #7ac4a0; }
+    .ic-purple { background: #f3eeff; border: 1.5px solid #b09de0; }
+    .ic-orange { background: #fff4e6; border: 1.5px solid #f4a555; }
+    .ic-teal   { background: #e6f8f8; border: 1.5px solid #7ac4c4; }
+    .ic-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.86rem;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .ic-tip {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* ── Contact channel row ──────────────────────────────────────── */
+    .channel-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+    }
+    .channel-row:last-child { border-bottom: none; }
+    .channel-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      width: 32px;
+      text-align: center;
+    }
+    .channel-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--navy);
+    }
+    .channel-detail {
+      color: var(--muted);
+      font-size: 0.83rem;
+      margin-top: 2px;
+      line-height: 1.45;
+    }
+
+    /* ── Critical incident cards ──────────────────────────────────── */
+    .incident-card {
+      background: #fff0ee;
+      border-left: 4px solid var(--red-alert);
+      border-radius: 0 6px 6px 0;
+      padding: 9px 12px;
+      margin-bottom: 8px;
+      font-size: 0.86rem;
+      line-height: 1.5;
+    }
+    .incident-card:last-child { margin-bottom: 0; }
+    .incident-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--red-alert);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 3px;
+    }
+    .incident-desc { color: var(--text); }
+
+    /* ── Quick-ref pills ──────────────────────────────────────────── */
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 8px;
+    }
+    .pill {
+      border-radius: 999px;
+      padding: 3px 10px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .pill-navy   { background: #dbe6f5; border: 1px solid #7a9acc; color: #002060; }
+    .pill-red    { background: var(--red-lt); border: 1px solid #e88070; color: var(--red-alert); }
+    .pill-green  { background: var(--green-lt); border: 1px solid #7ac4a0; color: var(--green); }
+    .pill-gold   { background: #fef3d0; border: 1px solid #c8962b; color: #6b4e00; }
+
+    /* ── Hours table ──────────────────────────────────────────────── */
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin-bottom: 4px;
+    }
+    .hours-table th {
+      background: var(--navy);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      padding: 5px 8px;
+      text-align: left;
+    }
+    .hours-table td {
+      padding: 5px 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hours-table tr:last-child td { border-bottom: none; }
+    .hours-table tr:nth-child(even) td { background: #f0f4fb; }
+    .on-call { color: var(--red-alert); font-weight: 700; }
+
+    /* ── Password policy highlight ────────────────────────────────── */
+    .policy-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: 0.86rem;
+    }
+    .policy-row:last-child { border-bottom: none; }
+    .policy-icon { font-size: 1.0rem; flex-shrink: 0; }
+    .policy-text { color: var(--text); }
+    .policy-text b { color: var(--navy); }
+
+    /* ── Footer ───────────────────────────────────────────────────── */
+    .poster-footer {
+      border-top: 3px solid var(--navy);
+      background: var(--navy);
+      padding: 12px 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .footer-left { color: #fff; font-size: 0.88rem; line-height: 1.55; }
+    .footer-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.0rem;
+      letter-spacing: 0.02em;
+      color: var(--gold-lt);
+    }
+    .footer-meta { color: rgba(255,255,255,0.75); font-size: 0.82rem; }
+    .footer-badges {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .fbadge {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.40);
+      border-radius: 4px;
+      padding: 3px 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .footer-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+    }
+    .confidential-badge {
+      background: var(--red-alert);
+      border: 1.5px solid rgba(255,255,255,0.5);
+      border-radius: 4px;
+      padding: 4px 12px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ── Misc helpers ─────────────────────────────────────────────── */
+    .body-text {
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 1.65;
+      margin-bottom: 10px;
+    }
+    .text-center { text-align: center; }
+    .mt-6  { margin-top: 6px; }
+    .mt-10 { margin-top: 10px; }
+    .mb-0  { margin-bottom: 0; }
+  </style>
+</head>
+<body>
+
+<div class="poster">
+
+  <!-- ═══════════════════════════ HEADER ════════════════════════════ -->
+  <header class="poster-header">
+    <!-- Logo -->
+    <div class="header-logo">
+      <div class="logo-shield">🏦</div>
+      <div class="logo-name">Heritage&nbsp;Community<br>Credit&nbsp;Union</div>
+    </div>
+
+    <!-- Centre title -->
+    <div class="header-center">
+      <div class="poster-title">IT <span>Self-Help &amp; Security</span> Portal</div>
+      <div class="poster-subtitle">Employee Reference Guide — All Branch Locations</div>
+      <div class="poster-tagline">Protecting your data, your members, and our institution — every day</div>
+    </div>
+
+    <!-- IT Helpdesk hotline -->
+    <div class="header-contact-box">
+      <div class="hcb-label">🔧 IT Help Desk</div>
+      <div class="hcb-number">Ext. 5555</div>
+      <div class="hcb-sub">or&nbsp;&nbsp;<strong style="color:#fff">it@heritageccu.org</strong></div>
+      <div class="hcb-sub" style="margin-top:6px;font-size:0.72rem;">
+        Mon–Fri&nbsp;8 am–6 pm<br>
+        <span style="color:#ffcfcf;">🔴 After hours: Ext.&nbsp;5500</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════ ALERT BANNER ══════════════════════ -->
+  <div class="alert-banner">
+    <span class="alert-banner-icon">🚨</span>
+    <span class="alert-banner-text">
+      CRITICAL: <span>Suspected fraud, ransomware, or data breach?</span> — Call IT immediately at
+      <span>Ext. 5500</span> (24/7) AND notify your Branch Manager. Do NOT wait until business hours.
+    </span>
+  </div>
+
+  <!-- ═══════════════════════════ BODY ══════════════════════════════ -->
+  <div class="poster-body">
+
+    <!-- ─────────────── LEFT COLUMN — Security ─────────────────── -->
+    <div class="col col-left">
+
+      <div class="sec-heading">🔒 IT Security Essentials</div>
+
+      <!-- Passwords -->
+      <div class="content-box box-navy">
+        <div class="box-label">🔑 Password Policy</div>
+        <div class="policy-row"><span class="policy-icon">📏</span>
+          <span class="policy-text"><b>Minimum 14 characters</b> — mix upper/lower, numbers &amp; symbols</span></div>
+        <div class="policy-row"><span class="policy-icon">🔄</span>
+          <span class="policy-text">Change password every <b>90 days</b> (system will prompt you)</span></div>
+        <div class="policy-row"><span class="policy-icon">🔁</span>
+          <span class="policy-text"><b>No reusing</b> your last 12 passwords</span></div>
+        <div class="policy-row"><span class="policy-icon">🔐</span>
+          <span class="policy-text">Use the <b>approved password manager</b> — never write credentials on paper</span></div>
+        <div class="policy-row"><span class="policy-icon">👤</span>
+          <span class="policy-text"><b>Never share</b> your login with anyone — including IT staff</span></div>
+      </div>
+
+      <!-- MFA -->
+      <div class="content-box box-gold">
+        <div class="box-label gold">📲 Multi-Factor Authentication (MFA)</div>
+        <ul class="bullet-list">
+          <li>MFA is <strong>mandatory</strong> for all systems — no exceptions</li>
+          <li>Use the Microsoft Authenticator app (already installed on work phones)</li>
+          <li>Never approve an MFA prompt you did not initiate — report it immediately</li>
+          <li>If your MFA device is lost or stolen, call IT within <strong>15 minutes</strong></li>
+        </ul>
+      </div>
+
+      <!-- Email security -->
+      <div class="content-box box-red">
+        <div class="box-label danger">📧 Phishing &amp; Email Safety</div>
+        <ul class="bullet-list danger">
+          <li>Check sender address carefully — not just the display name</li>
+          <li>Hover over links before clicking — verify the URL destination</li>
+          <li>No legitimate IT or vendor will ask for your password via email</li>
+          <li>Unexpected attachments from unknown senders = do <strong>not</strong> open</li>
+          <li>Use the <em>"Report Phishing"</em> button in Outlook to flag suspicious email</li>
+        </ul>
+      </div>
+
+      <!-- Physical security -->
+      <div class="content-box box-green">
+        <div class="box-label success">🖥️ Workstation &amp; Physical Security</div>
+        <ul class="bullet-list success">
+          <li>Lock your screen when stepping away — <strong>Win + L</strong> or <strong>Ctrl+Cmd+Q</strong></li>
+          <li>Never leave sensitive documents on your desk unattended</li>
+          <li>Dispose of paper with member data in the <strong>locked shred bins</strong></li>
+          <li>Challenge unfamiliar people in the back office — <em>tailgating is a threat</em></li>
+          <li>Do not plug in personal USB drives or unknown devices</li>
+        </ul>
+      </div>
+
+      <hr class="sec-divider">
+
+      <!-- DO / DON'T -->
+      <div class="sec-heading">✅ / ❌ Quick Security Rules</div>
+      <div class="do-dont">
+        <div class="do-cell">
+          <strong>✅ DO</strong>
+          <ul>
+            <li>Use VPN when working remotely</li>
+            <li>Log off shared terminals fully</li>
+            <li>Keep software up to date</li>
+            <li>Report anything suspicious</li>
+            <li>Use only approved cloud storage</li>
+          </ul>
+        </div>
+        <div class="dont-cell">
+          <strong>❌ DON'T</strong>
+          <ul>
+            <li>Use public Wi-Fi without VPN</li>
+            <li>Forward work email to personal</li>
+            <li>Install unapproved software</li>
+            <li>Click links in unsolicited texts</li>
+            <li>Discuss member data in public</li>
+          </ul>
+        </div>
+      </div>
+
+    </div><!-- /col-left -->
+
+    <!-- ─────────────── CENTRE COLUMN — Support & Issues ──────── -->
+    <div class="col col-mid">
+
+      <!-- How to contact IT -->
+      <div class="sec-heading">📞 How to Contact IT Support</div>
+
+      <div class="content-box box-navy mb-0" style="margin-bottom:10px">
+        <div class="box-label">When to contact IT and which channel to use</div>
+        <div class="channel-row">
+          <div class="channel-icon">📞</div>
+          <div>
+            <div class="channel-title">Phone / Extension <span class="sev-badge sev-critical">Critical</span> <span class="sev-badge sev-high">Urgent</span></div>
+            <div class="channel-detail">
+              <strong>Ext. 5555</strong> (business hours) · <strong>Ext. 5500</strong> (after hours/emergencies)<br>
+              Use for: suspected breach, ransomware, system-wide outages, fraud alerts, locked accounts blocking operations.
+            </div>
+          </div>
+        </div>
+        <div class="channel-row">
+          <div class="channel-icon">🎫</div>
+          <div>
+            <div class="channel-title">Helpdesk Ticket Portal <span class="sev-badge sev-medium">Routine</span></div>
+            <div class="channel-detail">
+              <strong>helpdesk.heritageccu.org</strong> (intranet only)<br>
+              Use for: software issues, print problems, new user setup, hardware requests, access rights changes. Target response: <strong>4 hours</strong>.
+            </div>
+          </div>
+        </div>
+        <div class="channel-row">
+          <div class="channel-icon">📧</div>
+          <div>
+            <div class="channel-title">Email <span class="sev-badge sev-low">Low Priority</span></div>
+            <div class="channel-detail">
+              <strong>it@heritageccu.org</strong><br>
+              Use for: non-urgent questions, documentation requests, follow-ups on existing tickets. Response within <strong>1 business day</strong>.
+            </div>
+          </div>
+        </div>
+        <div class="channel-row" style="border-bottom:none">
+          <div class="channel-icon">💬</div>
+          <div>
+            <div class="channel-title">Teams Chat (IT Support channel)</div>
+            <div class="channel-detail">
+              Use for: quick questions during business hours. Not for sensitive or security-related issues.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Support hours -->
+      <table class="hours-table" style="margin-bottom:12px">
+        <thead>
+          <tr><th>Day</th><th>Help Desk Hours</th><th>Emergency / On-Call</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Monday – Friday</td><td>8:00 am – 6:00 pm</td><td class="on-call">Ext. 5500 (24/7)</td></tr>
+          <tr><td>Saturday</td><td>9:00 am – 1:00 pm</td><td class="on-call">Ext. 5500 (24/7)</td></tr>
+          <tr><td>Sunday / Holidays</td><td><em>Closed</em></td><td class="on-call">Ext. 5500 (24/7)</td></tr>
+        </tbody>
+      </table>
+
+      <hr class="sec-divider">
+
+      <!-- Common user issues -->
+      <div class="sec-heading">🛠️ Most Common User Issues &amp; Self-Help Tips</div>
+
+      <div class="issue-grid">
+        <div class="issue-card ic-navy">
+          <div class="ic-title">🔐 Locked Account</div>
+          <div class="ic-tip">Wait 10 min then retry, or call Ext. 5555. IT can unlock in &lt;5 min during hours.</div>
+        </div>
+        <div class="issue-card ic-gold">
+          <div class="ic-title">🖨️ Printer Not Working</div>
+          <div class="ic-tip">Restart the printer, re-select from print dialog. If stuck queue, submit a ticket on helpdesk portal.</div>
+        </div>
+        <div class="issue-card ic-green">
+          <div class="ic-title">🌐 Internet / Network Slow</div>
+          <div class="ic-tip">Restart your network adapter (right-click Wi-Fi icon). If branch-wide, call IT — may be a routing issue.</div>
+        </div>
+        <div class="issue-card ic-purple">
+          <div class="ic-title">💻 Outlook / Email Down</div>
+          <div class="ic-tip">Close and reopen Outlook. Check Microsoft 365 status page via IT intranet. Log ticket if persists.</div>
+        </div>
+        <div class="issue-card ic-orange">
+          <div class="ic-title">🖥️ Slow Computer</div>
+          <div class="ic-tip">Restart your PC first. Close unused programs. If daily issue, submit a hardware ticket for evaluation.</div>
+        </div>
+        <div class="issue-card ic-teal">
+          <div class="ic-title">📱 MFA App Issue</div>
+          <div class="ic-tip">Ensure phone time is auto-synced. Restart app. If code fails, call IT immediately — may indicate compromise.</div>
+        </div>
+        <div class="issue-card ic-navy">
+          <div class="ic-title">🔗 VPN Not Connecting</div>
+          <div class="ic-tip">Verify internet connection first. Disconnect and reconnect VPN. Ensure MFA is completed. Call if unable to connect.</div>
+        </div>
+        <div class="issue-card ic-gold">
+          <div class="ic-title">💾 Can't Access a File / Share</div>
+          <div class="ic-tip">Check that you're on the correct network/VPN. Submit an access request ticket — managers must approve.</div>
+        </div>
+        <div class="issue-card ic-green">
+          <div class="ic-title">📷 Teller / Scanner Device</div>
+          <div class="ic-tip">Restart the device and USB connection. Use the device-specific guide in the IT intranet knowledge base.</div>
+        </div>
+        <div class="issue-card ic-orange">
+          <div class="ic-title">🔔 Suspicious Pop-up / Alert</div>
+          <div class="ic-tip">Do <strong>not</strong> click anything. Photograph the screen, then call IT Ext. 5555 immediately.</div>
+        </div>
+      </div>
+
+      <hr class="sec-divider">
+
+      <!-- Ticket info tip -->
+      <div class="content-box box-purple" style="font-size:0.84rem">
+        <div class="box-label">📋 When submitting a ticket, always include:</div>
+        <div class="pill-row">
+          <span class="pill pill-navy">Your full name &amp; branch</span>
+          <span class="pill pill-navy">Asset / PC tag number</span>
+          <span class="pill pill-navy">Exact error message or screenshot</span>
+          <span class="pill pill-navy">When it started</span>
+          <span class="pill pill-navy">Steps you already tried</span>
+          <span class="pill pill-navy">Urgency level</span>
+        </div>
+        <em style="color:var(--muted)">Good tickets get faster resolutions — be specific!</em>
+      </div>
+
+    </div><!-- /col-mid -->
+
+    <!-- ─────────────── RIGHT COLUMN — Critical Incidents ───────── -->
+    <div class="col col-right">
+
+      <div class="sec-heading danger">🚨 Critical Incidents — Report Immediately</div>
+      <p class="body-text text-center" style="font-size:0.83rem;color:var(--red-alert);font-weight:600;margin-bottom:8px">
+        These situations require an immediate phone call to IT (Ext.&nbsp;5500) AND your Branch Manager.<br>
+        Do <u>not</u> attempt to self-resolve. Do <u>not</u> delay.
+      </p>
+
+      <div class="incident-card">
+        <div class="incident-title">🦠 Ransomware / Malware Suspected</div>
+        <div class="incident-desc">Files with unusual extensions, ransom messages on screen, or sudden inability to open documents. <strong>Disconnect your network cable immediately</strong> — do not shut down. Call IT.</div>
+      </div>
+
+      <div class="incident-card">
+        <div class="incident-title">📧 Successful Phishing Click</div>
+        <div class="incident-desc">You clicked a suspicious link or entered credentials on an unrecognised page. Time is critical — accounts must be locked within minutes to prevent fraud.</div>
+      </div>
+
+      <div class="incident-card">
+        <div class="incident-title">💳 Suspected Member Data Breach</div>
+        <div class="incident-desc">Any unauthorised access to member accounts, PII, or card data — even suspected. Regulatory reporting (NCUA / PIPEDA) has strict timelines. Report immediately.</div>
+      </div>
+
+      <div class="incident-card">
+        <div class="incident-title">🔑 Credential Compromise / Unauthorised Login</div>
+        <div class="incident-desc">Unexpected MFA prompts, login alerts from unknown locations, or notification that your credentials appeared in a data leak.</div>
+      </div>
+
+      <div class="incident-card">
+        <div class="incident-title">💻 Core Banking System Down</div>
+        <div class="incident-desc">Inability to process transactions branch-wide. Do not attempt workarounds. Call IT and open an emergency incident ticket.</div>
+      </div>
+
+      <div class="incident-card">
+        <div class="incident-title">📟 Vishing / Social Engineering Call</div>
+        <div class="incident-desc">A caller claiming to be IT, a vendor, or a regulator asking for credentials, system access, or wire transfers. Hang up and report to IT and your manager.</div>
+      </div>
+
+      <div class="incident-card">
+        <div class="incident-title">🖥️ Unusual System Behaviour</div>
+        <div class="incident-desc">Camera light on without reason, mouse moving on its own, unknown programs running, or unexplained account changes. Potential remote access trojan (RAT).</div>
+      </div>
+
+      <div class="incident-card">
+        <div class="incident-title">📦 Lost or Stolen Device</div>
+        <div class="incident-desc">Any work laptop, phone, tablet, USB, or card reader that is lost or stolen. Remote wipe must be initiated within the hour to protect member data.</div>
+      </div>
+
+      <hr class="sec-divider">
+
+      <!-- Escalation steps -->
+      <div class="sec-heading danger">📋 Critical Incident Response Steps</div>
+      <ol class="step-list">
+        <li>
+          <span class="step-num danger">1</span>
+          <span><strong>Stay calm — don't click anything else.</strong> Step away from the device if needed.</span>
+        </li>
+        <li>
+          <span class="step-num danger">2</span>
+          <span>If malware: <strong>unplug the network cable</strong>. Do NOT power off the machine.</span>
+        </li>
+        <li>
+          <span class="step-num danger">3</span>
+          <span>Call IT <strong>Ext. 5500</strong> immediately. State: your name, branch, nature of the issue.</span>
+        </li>
+        <li>
+          <span class="step-num danger">4</span>
+          <span>Notify your <strong>Branch Manager</strong> verbally — do not email sensitive details.</span>
+        </li>
+        <li>
+          <span class="step-num danger">5</span>
+          <span>Document what you saw: time, error messages, screenshots (use your phone if needed).</span>
+        </li>
+        <li>
+          <span class="step-num danger">6</span>
+          <span><strong>Do not discuss</strong> the incident with members or non-management staff — await IT guidance.</span>
+        </li>
+      </ol>
+
+      <hr class="sec-divider">
+
+      <!-- Compliance reminder -->
+      <div class="content-box box-gold" style="font-size:0.83rem">
+        <div class="box-label gold">⚖️ Compliance &amp; Regulatory Reminders</div>
+        <ul class="bullet-list">
+          <li>All member data is subject to <strong>NCUA, GLBA, and PCI DSS</strong> requirements</li>
+          <li>Breach notification must begin within <strong>72 hours</strong> of discovery</li>
+          <li>Annual security awareness training is <strong>mandatory</strong> for all staff</li>
+          <li>Acceptable Use Policy (AUP) must be re-signed each year</li>
+          <li>Questions? Email <strong>compliance@heritageccu.org</strong></li>
+        </ul>
+      </div>
+
+    </div><!-- /col-right -->
+
+  </div><!-- /poster-body -->
+
+  <!-- ═══════════════════════════ FOOTER ════════════════════════════ -->
+  <footer class="poster-footer">
+    <div class="footer-left">
+      <div class="footer-title">Heritage Community Credit Union — IT Department</div>
+      <div class="footer-meta">
+        This poster is for internal employee use only. For the full IT Security Policy and Knowledge Base, visit the intranet at
+        <strong style="color:var(--gold-lt)">intranet.heritageccu.org/it</strong> · Reviewed &amp; updated quarterly · Version 2.1 — Q2 2026
+      </div>
+    </div>
+    <div class="footer-right">
+      <div class="confidential-badge">🔒 Internal Use Only — Do Not Distribute</div>
+      <div class="footer-badges">
+        <span class="fbadge">📞 Help Desk: Ext. 5555</span>
+        <span class="fbadge">🚨 Emergency: Ext. 5500</span>
+        <span class="fbadge">✉ it@heritageccu.org</span>
+        <span class="fbadge">NCUA · GLBA · PCI DSS</span>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- /poster -->
+</body>
+</html>
