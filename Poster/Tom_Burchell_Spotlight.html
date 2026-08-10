@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Staff Spotlight — Tom Burchell</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #002366;
+      --gold:   #c8962b;
+      --gold2:  #f5c842;
+      --cream:  #fdf6e3;
+      --white:  #ffffff;
+      --dark:   #0d1b2a;
+      --glow-g: #00ff88;
+      --glow-b: #00cfff;
+      --glow-r: #ff4e6a;
+    }
+
+    body {
+      font-family: 'Open Sans', Arial, sans-serif;
+      background: #0d1b2a;
+      color: var(--dark);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 32px 16px;
+    }
+
+    @media print {
+      @page { size: A3 portrait; margin: 6mm; }
+      html, body { background: #0d1b2a !important; padding: 0;
+                   -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .poster { margin: 0 !important; box-shadow: none !important; }
+    }
+
+    /* ── POSTER SHELL ── */
+    .poster {
+      width: 780px;
+      background: var(--navy);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 0 60px rgba(0,207,255,0.35), 0 0 120px rgba(0,255,136,0.15);
+      position: relative;
+    }
+
+    /* ─── animated glow border ─── */
+    .poster::before {
+      content: '';
+      position: absolute; inset: 0;
+      border-radius: 18px;
+      border: 3px solid transparent;
+      background: linear-gradient(135deg, var(--glow-g), var(--glow-b), var(--gold2), var(--glow-r)) border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: linear-gradient(160deg, #001244 0%, #002f6c 60%, #001a45 100%);
+      padding: 36px 32px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--glow-g), var(--glow-b), var(--gold2), var(--glow-r), var(--glow-g));
+      background-size: 300% 100%;
+    }
+
+    /* floating glow blobs in header */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(40px);
+      opacity: 0.25;
+      pointer-events: none;
+    }
+    .blob-1 { width:200px; height:200px; background: var(--glow-g); top: -60px; left: -40px; }
+    .blob-2 { width:180px; height:180px; background: var(--glow-b); top: -40px; right: -40px; }
+    .blob-3 { width:140px; height:140px; background: var(--gold2);  bottom: -60px; left: 50%; transform: translateX(-50%); }
+
+    .spotlight-tag {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 11px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gold2);
+      border: 1.5px solid var(--gold2);
+      border-radius: 30px;
+      padding: 4px 18px;
+      margin-bottom: 20px;
+      background: rgba(200,150,43,0.1);
+    }
+
+    /* photo circle */
+    .photo-wrap {
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      padding: 4px;
+      background: linear-gradient(135deg, var(--glow-g), var(--glow-b), var(--gold2));
+      position: relative;
+      z-index: 1;
+    }
+    .photo-wrap img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      border: 3px solid var(--navy);
+    }
+
+    .name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 42px;
+      color: var(--white);
+      line-height: 1;
+      letter-spacing: -1px;
+      text-shadow: 0 0 30px rgba(0,207,255,0.6);
+      position: relative; z-index: 1;
+    }
+    .name span {
+      color: var(--gold2);
+    }
+
+    .title-bar {
+      display: inline-block;
+      margin-top: 12px;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 22px;
+      border-radius: 30px;
+      position: relative; z-index: 1;
+    }
+
+    .meta-pills {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+      position: relative; z-index: 1;
+    }
+    .pill {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--white);
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 20px;
+      padding: 4px 14px;
+    }
+
+    /* ── BODY ── */
+    .body {
+      background: var(--cream);
+      padding: 28px 28px 0;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    /* section cards */
+    .card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 18px 18px 16px;
+      box-shadow: 0 2px 12px rgba(0,35,102,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      border-radius: 12px 12px 0 0;
+    }
+    .card.green::before  { background: linear-gradient(90deg, var(--glow-g), #00bfff); }
+    .card.blue::before   { background: linear-gradient(90deg, var(--glow-b), #0070ff); }
+    .card.gold::before   { background: linear-gradient(90deg, var(--gold), var(--gold2)); }
+    .card.red::before    { background: linear-gradient(90deg, var(--glow-r), #ff8c00); }
+    .card.purple::before { background: linear-gradient(90deg, #a855f7, #6366f1); }
+
+    .card-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .card.green  .card-title { color: #00994d; }
+    .card.blue   .card-title { color: #0070cc; }
+    .card.gold   .card-title { color: var(--gold); }
+    .card.red    .card-title { color: #cc2244; }
+    .card.purple .card-title { color: #8b22cc; }
+
+    .card p, .card li { font-size: 12.5px; color: #333; line-height: 1.6; }
+    .card ul { padding-left: 16px; }
+    .card ul li { margin-bottom: 3px; }
+
+    /* timeline */
+    .timeline { list-style: none; padding: 0; position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 8px; top: 4px; bottom: 4px;
+      width: 2px; background: linear-gradient(to bottom, var(--glow-g), var(--glow-b), var(--gold2));
+      border-radius: 2px;
+    }
+    .timeline li {
+      padding-left: 26px;
+      position: relative;
+      margin-bottom: 8px;
+      font-size: 12.5px;
+      color: #333;
+      line-height: 1.5;
+    }
+    .timeline li::before {
+      content: '';
+      position: absolute; left: 4px; top: 5px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--gold2);
+      border: 2px solid var(--white);
+      box-shadow: 0 0 0 2px var(--gold);
+    }
+    .timeline li strong {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      color: #003366;
+    }
+
+    /* hobby chips */
+    .hobby-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 2px;
+    }
+    .chip {
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 5px 13px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .chip.g  { background: #e6fff4; color: #006633; border: 1px solid #00cc66; }
+    .chip.b  { background: #e6f8ff; color: #005599; border: 1px solid #0099cc; }
+    .chip.p  { background: #f3e8ff; color: #6600aa; border: 1px solid #a855f7; }
+    .chip.o  { background: #fff4e6; color: #884400; border: 1px solid #cc7700; }
+    .chip.r  { background: #ffe8e8; color: #990033; border: 1px solid #cc0044; }
+
+    /* full-width card */
+    .card.full { margin-bottom: 20px; }
+
+    /* fun fact big callout */
+    .fun-fact-box {
+      background: linear-gradient(135deg, #002060 0%, #003380 100%);
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .fun-fact-icon {
+      font-size: 40px;
+      flex-shrink: 0;
+    }
+    .fun-fact-box p {
+      color: var(--white);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .fun-fact-box p strong {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 15px;
+      color: var(--gold2);
+      margin-bottom: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    /* deployment badges */
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .badge {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10.5px;
+      padding: 4px 12px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .badge.danger { background: #3a0010; color: #ff6688; border: 1px solid #cc2244; }
+    .badge.info   { background: #002040; color: #66ccff; border: 1px solid #0088cc; }
+    .badge.warn   { background: #3a2500; color: #ffcc44; border: 1px solid #cc8800; }
+
+    /* link style */
+    .card a {
+      color: #0055aa;
+      font-weight: 600;
+      text-decoration: none;
+      word-break: break-all;
+    }
+    .card a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: linear-gradient(160deg, #001244 0%, #002f6c 100%);
+      padding: 20px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+    }
+    .footer-logo .logo-text {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+      line-height: 1.1;
+    }
+    .footer-logo .logo-sub {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold2);
+    }
+    .footer-tagline {
+      font-family: 'Montserrat', sans-serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--gold2);
+      text-align: right;
+    }
+    .footer-tagline span {
+      display: block;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 10.5px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 2px;
+    }
+  </style>
+</head>
+<body>
+<div class="poster">
+
+  <!-- ═══════════════ HEADER ═══════════════ -->
+  <div class="header">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <div class="spotlight-tag">⭐ Staff Spotlight</div>
+
+    <div class="photo-wrap">
+      <img src="https://github.com/user-attachments/assets/6dc87d4a-d344-49a0-a6b8-f7c243da60ef"
+           alt="Tom Burchell with glow sticks" />
+    </div>
+
+    <div class="name">TOM <span>BURCHELL</span></div>
+    <div class="title-bar">IT Administrator &nbsp;·&nbsp; Valley Credit Union</div>
+
+    <div class="meta-pills">
+      <span class="pill">📍 Middleton, NS</span>
+      <span class="pill">💍 Married · 5 Kids</span>
+      <span class="pill">🎖️ 24 Years Army</span>
+      <span class="pill">🎓 NSCC IT Prog · 2026</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════ BODY ═══════════════ -->
+  <div class="body">
+
+    <!-- Row 1 -->
+    <div class="two-col">
+
+      <!-- Military Career -->
+      <div class="card green">
+        <div class="card-title">🎖️ Military Career</div>
+        <ul class="timeline">
+          <li>
+            <strong>2000 — Enlisted</strong>
+            Joined the Canadian Army as a Signal Operator
+          </li>
+          <li>
+            <strong>Postings Across Canada</strong>
+            Petawawa · Kingston · Edmonton · Oromocto · Middleton
+          </li>
+          <li>
+            <strong>Overseas Deployments</strong>
+            <div class="badges">
+              <span class="badge danger">🪖 Afghanistan ×3</span>
+              <span class="badge info">🇱🇻 Latvia</span>
+            </div>
+          </li>
+          <li>
+            <strong>Domestic Operations</strong>
+            <div class="badges">
+              <span class="badge warn">🧊 NB Ice Storms 2017</span>
+              <span class="badge warn">🌊 Fredericton Floods 2018</span>
+            </div>
+          </li>
+          <li>
+            <strong>2024 — Medically Released</strong>
+            After 24 proud years of service
+          </li>
+        </ul>
+      </div>
+
+      <!-- New Chapter -->
+      <div class="card blue">
+        <div class="card-title">🚀 New Chapter</div>
+        <ul class="timeline">
+          <li>
+            <strong>2024 — Back to School</strong>
+            Enrolled in 2-year IT Programming at NSCC
+          </li>
+          <li>
+            <strong>2026 — Graduated!</strong>
+            Completed the IT Programming program
+          </li>
+          <li>
+            <strong>2026 — Valley Credit Union</strong>
+            Joined as IT Administrator — 4 months strong and counting!
+          </li>
+        </ul>
+        <br/>
+        <p style="font-size:12px; color:#444; margin-top:4px;">
+          From battlefield communications to corporate networks — Tom brings the same precision and dedication to VCU's technology infrastructure.
+        </p>
+      </div>
+    </div>
+
+    <!-- Volunteer / Community -->
+    <div class="card gold full">
+      <div class="card-title">🤝 Community &amp; Giving Back</div>
+      <div class="two-col" style="gap:14px; margin-bottom:0;">
+        <div>
+          <p><strong>🍖 Food Bank BBQs &amp; Bottle Drives</strong></p>
+          <p style="margin-top:4px;">Volunteered at fundraisers and bottle drives for the Oromocto, NB food bank — giving back to the community that supported the base.</p>
+        </div>
+        <div>
+          <p><strong>👨‍👩‍👧 Supporting Families in Need</strong></p>
+          <p style="margin-top:4px;">Regularly donated furniture and clothing through local churches to help single parents escaping difficult situations — "Having had 5 kids, we had a lot of stuff to give away!"</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fun Fact -->
+    <div class="fun-fact-box">
+      <div class="fun-fact-icon">🩺</div>
+      <p>
+        <strong>Fun Fact — Certified Life-Saver!</strong>
+        Tom was a First Aid Instructor for <em>5 years</em>, training both military and civilian personnel. He's literally saved lives before coming to save your printer from error codes.
+      </p>
+    </div>
+
+    <!-- Hobbies -->
+    <div class="card purple full">
+      <div class="card-title">🎮 Hobbies &amp; Passions</div>
+      <div class="hobby-chips">
+        <span class="chip p">🐉 Dungeons &amp; Dragons</span>
+        <span class="chip b">🎮 RPGs &amp; MMORPGs</span>
+        <span class="chip g">💻 Web &amp; App Dev</span>
+        <span class="chip o">🏕️ Rough Camping</span>
+        <span class="chip r">🌍 Global Politics</span>
+        <span class="chip p">🔮 Esoteric &amp; Paranormal</span>
+        <span class="chip b">📜 Family History Research</span>
+      </div>
+      <div style="margin-top: 14px; display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+        <div style="background:#f3e8ff; border-radius:8px; padding:10px 12px; border-left: 3px solid #a855f7;">
+          <p style="font-weight:700; font-size:11.5px; color:#6600aa; margin-bottom:3px;">🔮 Esoteric Wisdom</p>
+          <a href="https://esoteric-wisdom.onrender.com/" style="font-size:11.5px;">esoteric-wisdom.onrender.com</a>
+        </div>
+        <div style="background:#e8f0ff; border-radius:8px; padding:10px 12px; border-left: 3px solid #4a90d9;">
+          <p style="font-weight:700; font-size:11.5px; color:#003380; margin-bottom:3px;">📜 Burchell Family History</p>
+          <a href="https://burchellfamily.onrender.com/" style="font-size:11.5px;">burchellfamily.onrender.com</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quote -->
+    <div style="text-align:center; padding: 4px 0 24px;">
+      <p style="font-family:'Montserrat',sans-serif; font-weight:900; font-size:17px; color:#002366; line-height:1.4; font-style:italic;">
+        "From Signal Operator to System Administrator —<br/>
+        24 years keeping comms alive, now keeping networks alive."
+      </p>
+    </div>
+
+  </div><!-- end body -->
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <div class="footer">
+    <div class="footer-logo">
+      <!-- VCU logo approximation in CSS -->
+      <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Valley Credit Union logo mark">
+        <circle cx="22" cy="22" r="21" stroke="#c8962b" stroke-width="2" fill="none"/>
+        <path d="M10 16 L22 32 L34 16" stroke="#c8962b" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M14 16 L22 26 L30 16" stroke="#f5c842" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10 14 Q22 8 34 14" stroke="#c8962b" stroke-width="1.5" fill="none"/>
+      </svg>
+      <div>
+        <div class="logo-text">Valley Credit Union</div>
+        <div class="logo-sub">Middleton, Nova Scotia</div>
+      </div>
+    </div>
+    <div class="footer-tagline">
+      Staff Spotlight Series
+      <span>Valley Credit Union · 2026</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
